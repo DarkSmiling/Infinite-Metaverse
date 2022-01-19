@@ -1,0 +1,43 @@
+[
+  {
+    "template":"#vxr-obj-template-1",
+    "selector":"#instruments"
+  },
+  {
+    "template":"#vxr-obj-template-2",
+    "selector":"#alcoholbottle01"
+  },
+  {
+    "template":"#vxr-obj-template-3",
+    "selector":"#alcoholgel01"
+  },
+  {
+    "template":"#vxr-obj-template-4",
+    "selector":"#tray002"
+  },
+  {
+    "template":"#vxr-obj-template-5",
+    "selector":"#cottonswabs001"
+  },
+  {
+    "template":"#vxr-obj-template-6",
+    "selector":"#cottonswabs002"
+  },
+  {
+    "template":"#vxr-obj-template-7",
+    "selector":"#cottonswabs003"
+  },
+  {
+    "template":"#vxr-obj-template-8",
+    "selector":"#gauze01"
+  },
+  {
+    "template":"#vxr-obj-template-9",
+    "selector":"#maskn9501"
+  },
+  {
+    "template":"#vxr-obj-template-10",
+    "selector":"#medicaltape01"
+  }   
+]
+ 

@@ -1,0 +1,54 @@
+[
+    {
+        "tasks": [
+            {
+                "id": "task1",
+                "material": "color: grey",
+                "height": "0.15",
+                "width": "1.0",
+                "position": "0 0.5 0.01",
+                "text": "value: Task 1; align: center"
+            },
+            {
+                "id": "task2",
+                "material": "color: grey",
+                "height": "0.15",
+                "width": "1.0",
+                "position": "0 0.3 0.01",
+                "text": "value: Task 2; align: center"
+            },
+            {
+                "id": "task3",
+                "material": "color: grey",
+                "height": "0.15",
+                "width": "1.0",
+                "position": "0 0.1 0.01",
+                "text": "value: Task 3; align: center"
+            },
+            {
+                "id": "task4",
+                "material": "color: grey",
+                "height": "0.15",
+                "width": "1.0",
+                "position": "0 -0.1 0.01",
+                "text": "value: Task 4; align: center"
+            },
+            {
+                "id": "task5",
+                "material": "color: grey",
+                "height": "0.15",
+                "width": "1.0",
+                "position": "0 -0.3 0.01",
+                "text": "value: Task 5; align: center"
+            },
+            {
+                "id": "task6",
+                "material": "color: grey",
+                "height": "0.15",
+                "width": "1.0",
+                "position": "0 -0.5 0.01",
+                "text": "value: Task 6; align: center"
+            }
+        ]
+    }
+]

@@ -1,0 +1,172 @@
+[{
+        "position": "-0.05 1.2 -3",
+        "element": "a-plane",
+        "width": "4.5",
+        "height": "2.9",
+        "material": "color: #072B73",
+        "opacity": "0.6",
+        "id": "panel1"
+    },
+    {
+        "position": "-0.5 2.4 -3",
+        "element": "a-text",
+        "width": "4.3",
+        "height": "4.3",
+        "material": "color: #072B73",
+        "value": "Processes",
+        "opacity": "1.0",
+        "id": "text1"
+    },
+    {
+        "position": "-2 1.35 -3",
+        "element": "a-text",
+        "width": "3.0",
+        "height": "3.0",
+        "material": "color: #072B73",
+        "value": "Process 1",
+        "opacity": "1.0",
+        "id": "text2"
+    },
+    {
+        "position": "-0.9 1.35 -3",
+        "element": "a-text",
+        "width": "3.0",
+        "height": "3.0",
+        "material": "color: #072B73",
+        "value": "Process 2",
+        "opacity": "1.0",
+        "id": "text3"
+    },
+    {
+        "position": "0.2 1.35 -3",
+        "element": "a-text",
+        "width": "3.0",
+        "height": "3.0",
+        "material": "color: #072B73",
+        "value": "Process 3",
+        "opacity": "1.0",
+        "id": "text4"
+    },
+    {
+        "position": "1.3 1.35 -3",
+        "element": "a-text",
+        "width": "3.0",
+        "height": "3.0",
+        "material": "color: #072B73",
+        "value": "Process 4",
+        "opacity": "1.0",
+        "id": "text5"
+    },
+    {
+        "position": "-2 0.25 -3",
+        "element": "a-text",
+        "width": "3.0",
+        "height": "3.0",
+        "material": "color: #072B73",
+        "value": "Process 5",
+        "opacity": "1.0",
+        "id": "text6"
+    },
+    {
+        "position": "-0.9 0.25 -3",
+        "element": "a-text",
+        "width": "3.0",
+        "height": "3.0",
+        "material": "color: #072B73",
+        "value": "Process 6",
+        "opacity": "1.0",
+        "id": "text7"
+    },
+    {
+        "position": "0.2 0.25 -3",
+        "element": "a-text",
+        "width": "3.0",
+        "height": "3.0",
+        "material": "color: #072B73",
+        "value": "Process 7",
+        "opacity": "1.0",
+        "id": "text8"
+    },
+    {
+        "position": "1.3 0.25 -3",
+        "element": "a-text",
+        "width": "3.0",
+        "height": "3.0",
+        "material": "color: #072B73",
+        "value": "Process 8",
+        "opacity": "1.0",
+        "id": "text9"
+    },
+    {
+        "position": "-1.7 1.8 -2.99",
+        "element": "a-plane",
+        "width": "1.0",
+        "height": "0.7",
+        "material": "src: ../../dist/images/Proceso1.jpg",
+        "opacity": "1.0",
+        "id": "panel2"
+    },
+    {
+        "position": "-0.6 1.8 -2.99",
+        "element": "a-plane",
+        "width": "1.0",
+        "height": "0.7",
+        "material": "src: ../../dist/images/Proceso2.jpg",
+        "opacity": "1.0",
+        "id": "panel3"
+    },
+    {
+        "position": "0.5 1.8 -2.99",
+        "element": "a-plane",
+        "width": "1.0",
+        "height": "0.7",
+        "material": "src: ../../dist/images/Proceso3.jpg",
+        "opacity": "1.0",
+        "id": "panel4"
+    },
+    {
+        "position": "1.6 1.8 -2.99",
+        "element": "a-plane",
+        "width": "1.0",
+        "height": "0.7",
+        "material": "src: ../../dist/images/Proceso4.jpg",
+        "opacity": "1.0",
+        "id": "panel5"
+    },
+    {
+        "position": "-1.7 0.7 -2.99",
+        "element": "a-plane",
+        "width": "1.0",
+        "height": "0.7",
+        "material": "src: ../../dist/images/Proceso5.jpg",
+        "opacity": "1.0",
+        "id": "panel6"
+    },
+    {
+        "position": "-0.6 0.7 -2.99",
+        "element": "a-plane",
+        "width": "1.0",
+        "height": "0.7",
+        "material": "src: ../../dist/images/Proceso6.jpg",
+        "opacity": "1.0",
+        "id": "panel7"
+    },
+    {
+        "position": "0.5 0.7 -2.99",
+        "element": "a-plane",
+        "width": "1.0",
+        "height": "0.7",
+        "material": "src: ../../dist/images/Proceso7.jpg",
+        "opacity": "1.0",
+        "id": "panel8"
+    },
+    {
+        "position": "1.6 0.7 -2.99",
+        "element": "a-plane",
+        "width": "1.0",
+        "height": "0.7",
+        "material": "src: ../../dist/images/Proceso8.jpg",
+        "opacity": "1.0",
+        "id": "panel9"
+    }
+]

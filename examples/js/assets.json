@@ -1,0 +1,138 @@
+[
+    {
+      "title": "Equipo",
+      "description": "Definicion"
+    },
+    {
+      "title": "Gorro",
+      "description": ""
+    },
+    {
+      "title": "Mascarilla Quirúrgica",
+      "description": ""
+    },
+    {
+      "title": "Gabachon",
+      "position": "0 2.5 -0.1",
+      "description": "Equipo de protección personal, disminuye el nivel de exposicion al virus de COVID-22"
+    },
+    {
+      "title": "Equipo de cateterismo vesical",
+      "position": "0 2.5 -0.1",
+      "description": "Bandeja cuadrada, escudillas o vasija pequena, pinzas alis, campo hendido"
+    },
+    {
+      "title": "Campo hendido",
+      "description": "Mantener la esterilidad del equipo",
+      "position": "0 2.5 -0.1"
+    },
+    {
+      "title": "Lubricante esteril",
+      "position": "0 2.5 -0.1",
+      "id": "e-Bottle_Lubricant-text",
+      "description": "Reduce la friccion,\n evitando los\n traumatismos"
+    },
+    {
+      "title": "Alcohol Gel",
+      "description": "Disminuye todos\n los microorganismos",
+      "position": "0 2.5 -0.1",
+      "id": "e-alcoholgel-text"
+    },
+    {
+      "title": "Vasija arriñonada",
+      "position": "0 2.5 -0.1",
+      "description": "Sirve para desechos comunes"
+    },
+    {
+      "title": "Jeringa",
+      "position": "0 2.5 -0.1",
+      "id": "e-tstSyringe-text",
+      "description": "Para inflar el balon en la sonda foley y quede asegurada en la vejiga"
+    },
+    {
+      "title": "Solución Salina 0.9%",
+      "position": "0 2.5 -0.1",
+      "id": "e-SalineBag-text",
+      "description": "Para inflar el balon en la sonda foley y quede asegurada en la vejiga"
+    },
+    {
+      "title": "Pinza de transferencia",
+      "position": "0 2.5 -0.1",
+      "description": "Para agarrar material y mantener la esterilidad del equipo"
+    },
+    {
+      "title": "Guantes estériles",
+      "position": "0 2.5 -0.1",
+      "id": "e-Gloves_Steril-text",
+      "description": "Mantiene la esterilidad del equipo"
+    },
+    {
+      "title": "Sonda foley",
+      "position": "0 2.5 -0.1",
+      "description": "Para verificar la salida de orina"
+    },
+    {
+      "title": "Bolsa recolectora",
+      "position": "0 2.5 -0.1",
+      "id": "e-UrinaryBag-text",
+      "description": "Sirve para recolectar la orina"
+    },
+    {
+      "title": "Boimbo",
+      "position": "0 2.5 -0.1",
+      "description": "Proporciona privacidad y comodidad al usuario"
+    },
+    {
+      "title": "Cinta umbilical",
+      "position": "0 2.5 -0.1",
+      "id": "e-CordonUmbilical_Static-text",
+      "description": "Para sujetar la sonda"
+    },
+    {
+      "title": "Ahulado con sabana clinica",
+      "position": "0 2.5 -0.1",
+      "description": "Barrera de proteccion de la ropa de cama, favorece la comodadad del usuario y gasto de material"
+    },
+    {
+      "title": "Pato",
+      "position": "0 2.5 -0.1",
+      "description": "Para el aseo vulvar y prepusial"
+    },
+    {
+      "title": "Lámpara de ganzo",
+      "position": "0 2.5 -0.1",
+      "description": "Permite visualizar mejor la zona"
+    },
+    {
+      "title": "Tijera Mayo",
+      "position": "0 2.5 -0.1",
+      "description": "Para cortar material"
+    },
+    {
+      "title": "Micropore",
+      "position": "0 2.5 -0.1",
+      "description": "sirve para fijar el cateter e identificarlo correctamente"
+    },
+    {
+      "title": "Tarjeta Parenteral",
+      "position": "0 2.5 -0.1",
+      "description": "Sirve para registro de medicina via intramuscular, intravenosa, subcutanea e intradermica"
+    },
+    {
+      "title": "Tarjeta de cuidados",
+      "position": "0 2.5 -0.1",
+      "description": "Cuidados de enfermeria"
+    },
+    {
+      "title": "Basurero con bolsa roja",
+      "position": "0 2.5 -0.1",
+      "id": "container01-text",
+      "description": "Para los desechos solidos"
+    },
+    {
+      "title": "Basurero con bolsa negra",
+      "position": "0 2.5 -0.1",
+      "id": "containerblack01-text",
+      "description": "Para los desechos comunes"
+    }
+  ]

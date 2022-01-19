@@ -1,0 +1,22 @@
+[
+    {
+        "position": "0 2.5 0",
+        "element": "a-plane",
+        "width": "1.5",
+        "height": "0.5",
+        "material": "color: #232323",
+        "opacity": "0.0",
+        "id": "card",
+        "rotation": "0 180 0"
+    },
+    {
+        "position": "0.5 2.5 -0.01",
+        "element": "a-plane",
+        "width": "0.6",
+        "height": "0.5",
+        "material": "src: ../../dist/images/Bottle.jpg",
+        "opacity": "0.0",
+        "id": "imageAlcohol",
+        "rotation": "0 180 0"
+    }
+]

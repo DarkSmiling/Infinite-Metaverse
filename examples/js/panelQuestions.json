@@ -1,0 +1,116 @@
+[
+    {
+        "question": "value: Question1?; align: center",
+        "answers": [
+            {
+                "id": "firstAnswer",
+                "component": "rightAnswer",
+                "material": "color: #072B73",
+                "height": "0.15",
+                "width": "0.75",
+                "position": "0 0.3 0.01",
+                "text": "value: Answer1; align: center"
+            },
+            {
+                "id": "secondAnswer",
+                "material": "color: #072B73",
+                "height": "0.15",
+                "width": "0.75",
+                "position": "0 0.1 0.01",
+                "text": "value: Answer2; align: center"
+            },
+            {
+                "id": "thirdAnswer",
+                "material": "color: #072B73",
+                "height": "0.15",
+                "width": "0.75",
+                "position": "0 -0.1 0.01",
+                "text": "value: Answer3; align: center"
+            },
+            {
+                "id": "fourthAnswer",
+                "material": "color: #072B73",
+                "height": "0.15",
+                "width": "0.75",
+                "position": "0 -0.3 0.01",
+                "text": "value: Answer4; align: center"
+            }
+        ]
+    },
+    {
+        "question": "value: Question 2?; align: center",
+        "answers": [
+            {
+                "id": "firstAnswer",
+                "material": "color: #072B73",
+                "height": "0.15",
+                "width": "0.75",
+                "position": "0 0.1 0.01",
+                "text": "value: Answer6; align: center"
+            },
+            {
+                "id": "secondAnswer",
+                "material": "color: #072B73",
+                "height": "0.15",
+                "width": "0.75",
+                "position": "0 0.3 0.01",
+                "text": "value: Answer5; align: center"
+            },
+            {
+                "id": "thirdAnswer",
+                "material": "color: #072B73",
+                "height": "0.15",
+                "width": "0.75",
+                "position": "0 -0.1 0.01",
+                "text": "value: Answer7; align: center"
+            },
+            {
+                "id": "fourthAnswer",
+                "component": "rightAnswer",
+                "material": "color: #072B73",
+                "height": "0.15",
+                "width": "0.75",
+                "position": "0 -0.3 0.01",
+                "text": "value: Answer8; align: center"
+            }
+        ]
+    },
+    {
+        "question": "value: Question 3?; align: center",
+        "answers": [
+            {
+                "id": "firstAnswer",
+                "material": "color: #072B73",
+                "height": "0.15",
+                "width": "0.75",
+                "position": "0 0.3 0.01",
+                "text": "value: Answer9; align: center"
+            },
+            {
+                "id": "secondAnswer",
+                "material": "color: #072B73",
+                "height": "0.15",
+                "width": "0.75",
+                "position": "0 0.1 0.01",
+                "text": "value: Answer10; align: center"
+            },
+            {
+                "id": "thirdAnswer",
+                "component": "rightAnswer",
+                "material": "color: #072B73",
+                "height": "0.15",
+                "width": "0.75",
+                "position": "0 -0.1 0.01",
+                "text": "value: Answer11; align: center"
+            },
+            {
+                "id": "fourthAnswer",
+                "material": "color: #072B73",
+                "height": "0.15",
+                "width": "0.75",
+                "position": "0 -0.3 0.01",
+                "text": "value: Answer12; align: center"
+            }
+        ]      
+    }
+]

@@ -1,0 +1,209 @@
+[
+ 
+  {
+    "template": "vxr-obj-template-2",
+    "selector": ".vxr-obj-alcoholbottle"
+  },
+ 
+  {
+    "template": "vxr-obj-template-medicaltape",
+    "selector": ".vxr-obj-medicaltape"
+  },
+  {
+    "template": "vxr-obj-template-gauze",
+    "selector": ".vxr-obj-gauze"
+  },
+  {
+    "template": "vxr-obj-template-gauze2",
+    "selector": ".vxr-obj-gauze2"
+  },
+  {
+    "template": "vxr-obj-template-gauze3",
+    "selector": ".vxr-obj-gauze3"
+  },
+  {
+    "template": "vxr-obj-template-allistweezers",
+    "selector": ".vxr-obj-allistweezers"
+  },
+  {
+    "template": "vxr-obj-template-cottonswab01",
+    "selector": ".vxr-obj-cottonswab01"
+  },
+  {
+    "template": "vxr-obj-template-cottonswab02",
+    "selector": ".vxr-obj-cottonswab02"
+  },
+  {
+    "template": "vxr-obj-template-cottonswab03",
+    "selector": ".vxr-obj-cottonswab03"
+  },
+  {
+    "template": "vxr-obj-template-cottonswab04",
+    "selector": ".vxr-obj-cottonswab04"
+  },
+  {
+    "template": "vxr-obj-template-cottonswab05",
+    "selector": ".vxr-obj-cottonswab05"
+  },
+  {
+    "template": "vxr-obj-template-cottonswab06",
+    "selector": ".vxr-obj-cottonswab06"
+  },
+  {
+    "template": "vxr-obj-template-DestiledWater",
+    "selector": ".vxr-obj-DestiledWater"
+  },
+  {
+    "template": "vxr-obj-template-Bowl-Medic",
+    "selector": ".vxr-obj-template-Bowl-Medic"
+  },
+  {
+    "template": "vxr-obj-template-Bowl-Medic2",
+    "selector": ".vxr-obj-Bowl-Medic2"
+  },
+  {
+    "template": "vxr-obj-template-Bulb-Syringe",
+    "selector": ".vxr-obj-Bulb-Syringe"
+  },
+  {
+    "template": "vxr-obj-template-Hyssop",
+    "selector": ".vxr-obj-Hyssop"
+  },
+  {
+    "template": "vxr-obj-template-Hyssop1",
+    "selector": ".vxr-obj-Hyssop1"
+  },
+  {
+    "template": "vxr-obj-template-Infant-Scale",
+    "selector": ".vxr-obj-Infant-Scale"
+  },
+  {
+    "template": "vxr-obj-template-Thermic-Crib",
+    "selector": ".vxr-obj-Thermic-Crib"
+  },
+  {
+    "template": "vxr-obj-template-Thermometer",
+    "selector": ".vxr-obj-Thermometer"
+  },
+  {
+    "template": "vxr-obj-template-Clamp",
+    "selector": ".vxr-obj-Clamp"
+  },
+  {
+    "template": "vxr-obj-template-HairComb",
+    "selector": ".vxr-obj-HairComb"
+  },
+  {
+    "template": "vxr-obj-template-InkPad",
+    "selector": ".vxr-obj-InkPad"
+  },
+  {
+    "template": "vxr-obj-template-Baby_Vacuna",
+    "selector": ".vxr-obj-Baby_Vacuna"
+  },
+  {
+    "template": "vxr-obj-template-Cordon_Tijera",
+    "selector": ".vxr-obj-Cordon_Tijera"
+  },
+  {
+    "template": "vxr-obj-template-Manta_Mesa",
+    "selector": ".vxr-obj-Manta_Mesa"
+  },
+  {
+    "template": "vxr-obj-template-ToiletPaper",
+    "selector": ".vxr-obj-ToiletPaper"
+  },
+  {
+    "template": "vxr-obj-template-ToiletPaper2",
+    "selector": ".vxr-obj-ToiletPaper2"
+  },
+  {
+    "template": "vxr-obj-template-ToiletPaper3",
+    "selector": ".vxr-obj-ToiletPaper3"
+  },
+  {
+    "template": "vxr-obj-template-Vaseline",
+    "selector": ".vxr-obj-Vaseline"
+  },
+  {
+    "template": "vxr-obj-template-VitaminAmpoule",
+    "selector": ".vxr-obj-VitaminAmpoule"
+  },
+  {
+    "template": "vxr-obj-template-Cloranfenicol",
+    "selector": ".vxr-obj-Cloranfenicol"
+  }, 
+  {
+    "template": "vxr-obj-template-Syringe_1CC_Skin",
+    "selector": ".vxr-obj-Syringe_1CC_Skin"
+  }, 
+  {
+    "template": "vxr-obj-template-Towel1",
+    "selector": ".vxr-obj-Towel1"
+  }, 
+  {
+    "template": "vxr-obj-template-Towel2",
+    "selector": ".vxr-obj-Towel2"
+  }, 
+  {
+    "template": "vxr-obj-template-Towel3",
+    "selector": ".vxr-obj-Towel3"
+  }, 
+  {
+    "template": "vxr-obj-template-Tray_Surgical",
+    "selector": ".vxr-obj-Tray_Surgical"
+  }, 
+  {
+    "template": "vxr-obj-template-KidneyTray",
+    "selector": ".vxr-obj-KidneyTray"
+  }, 
+  {
+    "template": "vxr-obj-template-Plantares",
+    "selector": ".vxr-obj-Plantares"
+  }, 
+  {
+    "template": "vxr-obj-template-BowlSmall1",
+    "selector": ".vxr-obj-BowlSmall1"
+  }, 
+  {
+    "template": "vxr-obj-template-BowlSmall2",
+    "selector": ".vxr-obj-BowlSmall2"
+  }, 
+  {
+    "template": "vxr-obj-template-Pañal_Prueba",
+    "selector": ".vxr-obj-Pañal_Prueba"
+  }, 
+  {
+    "template": "vxr-obj-template-CleftGauze",
+    "selector": ".vxr-obj-CleftGauze"
+  }, 
+  {
+    "template": "vxr-obj-template-Medical_Laundry-v2",
+    "selector": ".vxr-obj-Medical_Laundry-v2"
+  }, 
+  {
+    "template": "vxr-obj-template-CintaCabezaAnim",
+    "selector": ".vxr-obj-CintaCabezaAnim"
+  },
+  {
+    "template": "vxr-obj-template-e-Baby_Pose_Side",
+    "selector": ".vxr-obj-e-Baby_Pose_Side"
+  }, 
+  {
+    "template": "vxr-obj-template-e-Baby_Pose_Idle",
+    "selector": ".vxr-obj-e-Baby_Pose_Idle"
+  }, 
+  {
+    "template": "vxr-obj-template-Baby_Burrito",
+    "selector": ".vxr-obj-Baby_Burrito"
+  },
+  {
+    "template": "vxr-obj-template-e-Manta_Abierta",
+    "selector": ".vxr-obj-e-Manta_Abierta"
+  },
+  {
+    "template": "vxr-obj-template-Pañal_Cerrado",
+    "selector": ".vxr-obj-Pañal_Cerrado"
+  }
+  
+ ]

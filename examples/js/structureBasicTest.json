@@ -1,0 +1,12 @@
+[
+  {
+    "template": "vxr-obj-maskn95",
+    "selector": ".vxr-obj-maskn95",
+    "obj": "../../Models/gltf/maskn95.gltf"
+  },
+  {
+    "template": "vxr-obj-bandeja",
+    "selector": ".vxr-obj-bandeja",
+    "obj": "../../Models/gltf/Bandeja02.gltf"
+  }
+]

@@ -1,0 +1,142 @@
+[
+  {
+    "template": "vxr-obj-template",
+    "selector": ".vxr-obj-maskn95"
+  },
+  {
+    "template": "vxr-obj-template-2",
+    "selector": ".vxr-obj-alcoholbottle"
+  },
+  {
+    "template": "vxr-obj-template-3",
+    "selector": ".vxr-obj-tray"
+  },
+  {
+    "template": "vxr-obj-template-4",
+    "selector": ".vxr-obj-rubber"
+  },
+  {
+    "template": "vxr-obj-template-dripbag",
+    "selector": ".vxr-obj-dripbag"
+  },
+  {
+    "template": "vxr-obj-template-medicaltape",
+    "selector": ".vxr-obj-medicaltape"
+  },
+  {
+    "template": "vxr-obj-template-gauze",
+    "selector": ".vxr-obj-gauze"
+  },
+  {
+    "template": "vxr-obj-template-allistweezers",
+    "selector": ".vxr-obj-allistweezers"
+  },
+  {
+    "template": "vxr-obj-template-cottonswab01",
+    "selector": ".vxr-obj-cottonswab01"
+  },
+  {
+    "template": "vxr-obj-template-cottonswab02",
+    "selector": ".vxr-obj-cottonswab02"
+  },
+  {
+    "template": "vxr-obj-template-cottonswab03",
+    "selector": ".vxr-obj-cottonswab03"
+  },
+  {
+    "template": "vxr-obj-template-salinebottle",
+    "selector": ".vxr-obj-salinebottle"
+  },
+  {
+    "template": "vxr-obj-template-alcoholgel",
+    "selector": ".vxr-obj-alcoholgel"
+  },
+  {
+    "template": "vxr-obj-template-heparinseal",
+    "selector": ".vxr-obj-heparinseal"
+  },
+  {
+    "template": "vxr-obj-template-intracath",
+    "selector": ".vxr-obj-intracath"
+  },
+  {
+    "template": "vxr-obj-template-catheter01",
+    "selector": ".vxr-obj-catheter01"
+  },
+  {
+    "template": "vxr-obj-template-catheter02",
+    "selector": ".vxr-obj-catheter02"
+  },
+  {
+    "template": "vxr-obj-template-disposable",
+    "selector": ".vxr-obj-disposable"
+  },
+  {
+    "template": "vxr-obj-template-disposableanim",
+    "selector": ".vxr-obj-disposableanim"
+  },
+  {
+    "template": "vxr-obj-template-tape01",
+    "selector": ".vxr-obj-tape01"
+  },
+  {
+    "template": "vxr-obj-template-tape02",
+    "selector": ".vxr-obj-tape02"
+  },
+  {
+    "template": "vxr-obj-template-tape03",
+    "selector": ".vxr-obj-tape03"
+  },
+  {
+    "template": "vxr-obj-template-medicalclothe",
+    "selector": ".vxr-obj-medicalclothe"
+  },
+  {
+    "template": "vxr-obj-template-medicalclothestatic",
+    "selector": ".vxr-obj-medicalclothestatic"
+  },
+  {
+    "template": "vxr-obj-template-tapestatic01",
+    "selector": ".vxr-obj-tapestatic01"
+  },
+  {
+    "template": "vxr-obj-template-tapestatic02",
+    "selector": ".vxr-obj-tapestatic02"
+  },
+  {
+    "template": "vxr-obj-template-tapestatic03",
+    "selector": ".vxr-obj-tapestatic03"
+  },
+  {
+    "template": "vxr-obj-template-serumcontrolcard",
+    "selector": ".vxr-obj-serumcontrolcard"
+  },
+  {
+    "template": "vxr-obj-template-boxsharpobject",
+    "selector": ".vxr-obj-boxsharpobject"
+  },
+  {
+    "template": "vxr-obj-template-intracathcap01",
+    "selector": ".vxr-obj-intracathcap01"
+  },
+  {
+    "template": "vxr-obj-template-intracathcap02",
+    "selector": ".vxr-obj-intracathcap02"
+  },
+  {
+    "template": "vxr-obj-template-intracathcap03",
+    "selector": ".vxr-obj-intracathcap03"
+  },
+  {
+    "template": "vxr-obj-template-tapeadult",
+    "selector": ".vxr-obj-tapeadult"
+  },
+  {
+    "template": "vxr-obj-template-tapeadultstatic",
+    "selector": ".vxr-obj-tapeadultstatic"
+  },
+  {
+    "template": "vxr-obj-template-disposablestatic02",
+    "selector": ".vxr-obj-disposablestatic02"
+  }
+]

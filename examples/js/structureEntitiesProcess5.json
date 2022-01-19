@@ -1,0 +1,183 @@
+[
+  {
+    "template": "vxr-obj-template-allistweezers",
+    "selector": ".vxr-obj-allistweezers"
+  },
+ {
+    "template": "vxr-obj-template-Bowl-Medic",
+    "selector": ".vxr-obj-template-Bowl-Medic"
+  },
+  {
+    "template": "vxr-obj-template-Bowl-Medic-2",
+    "selector": ".vxr-obj-template-Bowl-Medic-2"
+  },
+  {
+    "template": "vxr-obj-template-gauze",
+    "selector": ".vxr-obj-gauze"
+  },
+  {
+    "template": "vxr-obj-template-medicaltape",
+    "selector": ".vxr-obj-medicaltape"
+  }, 
+  {
+    "template": "vxr-obj-template-alcoholgel",
+    "selector": ".vxr-obj-alcoholgel"
+  },
+  {
+    "template": "vxr-obj-template-Basin",
+    "selector": ".vxr-obj-Basin"
+  },
+  {
+    "template": "vxr-obj-template-Basin_emisive",
+    "selector": ".vxr-obj-Basin"
+  },
+  {
+    "template": "vxr-obj-template-Basin_static",
+    "selector": ".vxr-obj-Basin"
+  },
+  {
+    "template": "vxr-obj-template-Bottle_Lubricant",
+    "selector": ".vxr-obj-Bottle_Lubricant"
+  },
+  {
+    "template": "vxr-obj-template-Bottle_Lubricant_emisive",
+    "selector": ".vxr-obj-Bottle_Lubricant_emisive"
+  },
+  {
+    "template": "vxr-obj-template-Bottle_Lubricant_static",
+    "selector": ".vxr-obj-Bottle_Lubricant_static"
+  },
+  {
+    "template": "vxr-obj-template-SalineBag_emisive",
+    "selector": ".vxr-obj-SalineBag_emisive"
+  },
+  {
+    "template": "vxr-obj-template-SalineBag_static",
+    "selector": ".vxr-obj-SalineBag_static"
+  },
+  {
+    "template": "vxr-obj-template-SterileField_Folded",
+    "selector": ".vxr-obj-SterileField_Folded"
+  },
+  {
+    "template": "vxr-obj-template-SterileField_Folded_emisive",
+    "selector": ".vxr-obj-SterileField_Folded_Emissive"
+  },
+  {
+    "template": "vxr-obj-template-SterileField_Folded_static",
+    "selector": ".vxr-obj-SterileField_Folded_Static"
+  },
+  {
+    "template": "vxr-obj-template-UmbilicalTape",
+    "selector": ".vxr-obj-UmbilicalTape"
+  },
+  {
+    "template": "vxr-obj-template-UrinaryBag",
+    "selector": ".vxr-obj-UrinaryBag"
+  },
+  {
+    "template": "vxr-obj-template-UrinaryBag_emisive",
+    "selector": ".vxr-obj-UrinaryBag_emisive"
+  },
+  {
+    "template": "vxr-obj-template-UrinaryBag_static",
+    "selector": ".vxr-obj-UrinaryBag_static"
+  },
+  {
+    "template": "vxr-obj-template-UrinaryCatheter",
+    "selector": ".vxr-obj-UrinaryCatheter"
+  },
+  {
+    "template": "vxr-obj-template-UrinaryCatheter_emisive",
+    "selector": ".vxr-obj-UrinaryCatheter_emisive"
+  },
+  {
+    "template": "vxr-obj-template-UrinaryCatheter_static",
+    "selector": ".vxr-obj-UrinalCatheter_static"
+  },
+  {
+    "template": "vxr-obj-template-tstSyringe",
+    "selector": ".vxr-obj-tstSyringe"
+  },
+  {
+    "template": "vxr-obj-template-Adhesive_Catheter",
+    "selector": ".vxr-obj-Adhesive_Catheter"
+  },
+  {
+    "template": "vxr-obj-template-Adhesive_Catheter_emisive",
+    "selector": ".vxr-obj-Adhesive_Catheter_emisive"
+  },
+  {
+    "template": "vxr-obj-template-Adhesive_Catheter_static",
+    "selector": ".vxr-obj-Adhesive_Catheter_static"
+  },
+  {
+    "template": "vxr-obj-template-SalineBag",
+    "selector": ".vxr-obj-SalineBag"
+  },
+  {
+    "template": "vxr-obj-template-Clamp_Allis",
+    "selector": ".vxr-obj-Clamp_Allis"
+  },
+  {
+    "template": "vxr-obj-template-Gauze_Pene",
+    "selector": ".vxr-obj-Gauze_Pene"
+  },
+  {
+    "template": "vxr-obj-template-Gauze_Pene_emisive",
+    "selector": ".vxr-obj-Gauze_Pene_emisive"
+  },
+  {
+    "template": "vxr-obj-template-Gauze_Pene_static",
+    "selector": ".vxr-obj-Gauze_Pene_static"
+  },
+  {
+    "template": "vxr-obj-template-ClampHolder",
+    "selector": ".vxr-obj-ClampHolder"
+  },
+  {
+    "template": "vxr-obj-template-Biombo_Anim",
+    "selector": ".vxr-obj-Biombo_Anim"
+  },
+  {
+    "template": "vxr-obj-template-CordonUmbilical_Static",
+    "selector": ".vxr-obj-CordonUmbilical_Static"
+  },
+  {
+    "template": "vxr-obj-template-Table_005",
+    "selector": ".vxr-obj-Table_005"
+  },
+  {
+    "template": "vxr-obj-template-Gloves_Steril",
+    "selector": ".vxr-obj-Gloves_Steril"
+  },
+  {
+    "template": "vxr-obj-template-Gloves_Steril_Open",
+    "selector": ".vxr-obj-Gloves_Steril_Open"
+  },
+  {
+    "template": "vxr-obj-template-Clothed_Instruments_Vesical_Static",
+    "selector": ".vxr-obj-Clothed_Instruments_Vesical_Static"
+  },
+  {
+    "template": "vxr-obj-template-Clothed_Instruments_Vesical",
+    "selector": ".vxr-obj-Clothed_Instruments_Vesical"
+  },
+  {
+    "template": "vxr-obj-template-card_yellow",
+    "selector": ".vxr-obj-card_yellow"
+  },
+  {
+    "template": "vxr-obj-template-Assistant_Nurse",
+    "selector": ".vxr-obj-Assistant_Nurse"
+  },
+  {
+    "template": "vxr-obj-template-witness_tape",
+    "selector": ".vxr-obj-witness_tape"
+  },
+  {
+    "template": "vxr-obj-template-adhesive",
+    "selector": ".vxr-obj-adhesive"
+  }
+  
+]

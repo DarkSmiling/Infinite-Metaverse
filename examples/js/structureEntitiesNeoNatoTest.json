@@ -1,0 +1,30 @@
+[
+  {
+    "template": "#vxr-obj-template-2",
+    "selector": ".vxr-obj-alcoholbottle",
+    "attributes": {
+      "position": {"x":1,"y":2,"z":3 },
+      "rotation":{"x":0,"y":0,"z":0 },
+      "gltf-model":"#alcoholbottle"
+    }
+  },
+ 
+  {
+    "template": "#vxr-obj-template-medicaltape",
+    "selector": ".vxr-obj-medicaltape",
+    "attributes": {
+      "position": {"x":1,"y":2,"z":3 },
+      "rotation":{"x":0,"y":0,"z":0 },
+      "gltf-model":"#medicaltape"
+    }
+  },
+  {
+    "template": "#vxr-obj-template-gauze",
+    "selector": ".vxr-obj-gauze",
+    "attributes": {
+      "position": {"x":1,"y":2,"z":3 },
+      "rotation":{"x":0,"y":0,"z":0 },
+      "gltf-model":"#medicaltape"
+    }
+  }
+]
