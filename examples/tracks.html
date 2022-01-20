@@ -1,0 +1,167 @@
+<html>
+
+<head>
+  <title>A-Frame Super Hands Component - 6DOF With Physics</title>
+  <!-- Replace "../build.js" with the super-hands and
+         A-Frame distributions to run : -->
+  <script src="super/build.js"></script>
+  <!-- <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script> -->
+  <!-- <script src="https://unpkg.com/super-hands/dist/super-hands.min.js"></script> -->
+  <script src="https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v4.0.1/dist/aframe-physics-system.js"></script>
+  <script src="https://unpkg.com/aframe-event-set-component@^4.1.1/dist/aframe-event-set-component.min.js"></script>
+  <!-- <script src="https://unpkg.com/aframe-physics-extras/dist/aframe-physics-extras.min.js"></script> -->
+  <script src="https://rawgit.com/feiss/aframe-environment-component/master/dist/aframe-environment-component.min.js"></script>
+
+  <!-- extra -->
+
+  <!-- Networked aframe -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.slim.js"></script>
+  <script src="/easyrtc/easyrtc.js"></script>
+  <script src="/dist/networked-aframe.js"></script>
+  <script src="https://unpkg.com/aframe-randomizer-components@^3.0.1/dist/aframe-randomizer-components.min.js"></script>
+  <script src="https://unpkg.com/aframe-particle-system-component@1.0.5/dist/aframe-particle-system-component.min.js"></script>
+ 
+  <!-- Super hands -->
+
+  <script src="https://unpkg.com/aframe-physics-extras/dist/aframe-physics-extras.min.js"></script>
+
+
+  <!-- ownership transfer dependencies -->
+
+  <script src="js/spawner.component.js"></script>
+  <script src="js/toggle-physics.component.js"></script>
+  <!-- <script src="/examples/js/rotator.component.js"></script> -->
+  <script src="js/rotator.component.js"></script>
+
+  <script>
+    //color randomizer
+    AFRAME.registerComponent('color-randomizer', {
+      play: function () {
+        this.el.addEventListener('drag-drop', function (evt) {
+          evt.detail.dropped.setAttribute('material', 'color',
+            '#' + (Math.random() * 0xFFFFFF << 0).toString(16))
+          // color randomizer credit: http://stackoverflow.com/questions/1484506/random-color-generator-in-javascript#comment6801353_5365036
+        })
+      }
+    })
+    // forward mouse and touch events to the super-hands entity
+    AFRAME.registerComponent('capture-mouse', {
+      init: function () {
+        this.eventRepeater = this.eventRepeater.bind(this)
+        this.el.sceneEl.addEventListener('loaded', () => {
+          this.el.sceneEl.canvas.addEventListener('mousedown', this.eventRepeater)
+          this.el.sceneEl.canvas.addEventListener('mouseup', this.eventRepeater)
+          this.el.sceneEl.canvas.addEventListener('touchstart', this.eventRepeater)
+          this.el.sceneEl.canvas.addEventListener('touchmove', this.eventRepeater)
+          this.el.sceneEl.canvas.addEventListener('touchend', this.eventRepeater)
+        }, { once: true })
+      },
+      eventRepeater: function (evt) {
+        if (evt.type.startsWith('touch')) {
+          evt.preventDefault()
+          // avoid repeating touchmove because it interferes with look-controls
+          if (evt.type === 'touchmove') { return }
+        }
+        this.el.emit(evt.type, evt.detail)
+      }
+    })
+  </script>
+
+<script>
+  function crapIsReady() {
+    let syncs = document.getElementsByClassName("syncup");
+    for (let i=0; i<syncs.length; ++i) {
+      syncs[i].setAttribute("networked", "template:#objects-template;attachTemplateToLocal:true")
+    }
+  }
+</script>
+
+</head>
+
+<body>
+  <a-scene physics environment="preset: tron; shadow: true" networked-scene="
+    room: dev;
+    debug: true;
+    adapter: wseasyrtc;
+    onConnect: crapIsReady;
+  ">
+
+    <a-assets>
+
+      <template id="objects-template">
+        <a-entity>
+          <a-sphere class="obj" color="#f00" toggle-physics draggable grabbable radius="0.2" position="0 2 0"></a-sphere>
+        </a-entity>
+      </template>
+
+    </a-assets>
+
+
+    <a-entity class="syncup" position="0 1 0"></a-entity>
+    <!-- <a-entity networked="template:#objects-template;attachTemplateToLocal:true;"></a-entity> -->
+
+
+    <!-- player -->
+    <a-entity camera look-controls wasd-controls position="0 1 1" capture-mouse raycaster cursor="rayOrigin:mouse"
+      body="type: static; shape: sphere; sphereRadius: 0.001" super-hands="colliderEvent: raycaster-intersection;
+                            colliderEventProperty: els;
+                            colliderEndEvent:raycaster-intersection-cleared;
+                            colliderEndEventProperty: clearedEls;" spawner="template:#objects-template">
+    </a-entity>
+
+
+    <!-- magic cube -->
+
+    <a-entity class="transformer" position="0 1.6 -1" color-randomizer droppable body="type: static; shape: box"
+      geometry="primitive: box; width: 0.5; height: 0.5; depth: 0.5"
+      event-set__dragon="_event: dragover-start; material.color: orange"
+      event-set__dragoff="_event: dragover-end; material.color: purple" material="color:purple" shadow>
+
+      <a-entity text="value: Drag&drop to change color;
+                        width: 0.5; wrapCount: 12; align: center" position="0 0 0.25">
+      </a-entity>
+    </a-entity>
+    
+    <!-- <a-entity>
+      <a-box id="lock-target" position="0 1.0 0" scale="0.25 0.25 0.25" color="#777" static-body>
+      </a-box>
+
+    </a-entity> -->
+
+    <a-box body="type: static; shape: box" width=100 height=0.001 depth=100 visible="false"></a-box>
+  </a-scene>
+
+
+
+  <script>
+    NAF.schemas.add({
+        template: '#objects-template',
+        components: [
+          'position',
+          'rotation',
+          {
+            selector: '.obj',
+            component: 'rotation'
+          },
+          {
+            selector: '.obj',
+            component: 'position'
+          },
+          {
+            selector: '.obj',
+            component: 'material',
+            property: 'color'
+          }
+        ]
+      });
+
+
+
+    function onConnect() {
+      console.log("funca", new Date());
+    }
+  </script>
+
+</body>
+
+</html>
