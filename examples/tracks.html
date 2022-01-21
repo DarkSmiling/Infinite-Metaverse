@@ -5,33 +5,20 @@
   <!-- Replace "../build.js" with the super-hands and
          A-Frame distributions to run : -->
   <script src="super/build.js"></script>
-  <!-- <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script> -->
-  <!-- <script src="https://unpkg.com/super-hands/dist/super-hands.min.js"></script> -->
-  <script src="https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v4.0.1/dist/aframe-physics-system.js"></script>
-  <script src="https://unpkg.com/aframe-event-set-component@^4.1.1/dist/aframe-event-set-component.min.js"></script>
-  <!-- <script src="https://unpkg.com/aframe-physics-extras/dist/aframe-physics-extras.min.js"></script> -->
-  <script src="https://rawgit.com/feiss/aframe-environment-component/master/dist/aframe-environment-component.min.js"></script>
-
-  <!-- extra -->
-
-  <!-- Networked aframe -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.slim.js"></script>
   <script src="/easyrtc/easyrtc.js"></script>
   <script src="/dist/networked-aframe.js"></script>
-  <script src="https://unpkg.com/aframe-randomizer-components@^3.0.1/dist/aframe-randomizer-components.min.js"></script>
-  <script src="https://unpkg.com/aframe-particle-system-component@1.0.5/dist/aframe-particle-system-component.min.js"></script>
- 
-  <!-- Super hands -->
 
+  <script src="https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v4.0.1/dist/aframe-physics-system.js"></script>
+  <script src="https://rawgit.com/feiss/aframe-environment-component/master/dist/aframe-environment-component.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
   <script src="https://unpkg.com/aframe-physics-extras/dist/aframe-physics-extras.min.js"></script>
 
 
-  <!-- ownership transfer dependencies -->
-
   <script src="js/spawner.component.js"></script>
   <script src="js/toggle-physics.component.js"></script>
-  <!-- <script src="/examples/js/rotator.component.js"></script> -->
   <script src="js/rotator.component.js"></script>
+  <script src="js/input.component.js"></script>
 
   <script>
     //color randomizer
@@ -79,7 +66,7 @@
 </head>
 
 <body>
-  <a-scene physics environment="preset: tron; shadow: true" networked-scene="
+  <a-scene physics="debug: true; gravity: -5; iterations: 10" environment="preset: tron; shadow: true" networked-scene="
     room: dev;
     debug: true;
     adapter: wseasyrtc;
@@ -87,21 +74,100 @@
   ">
 
     <a-assets>
+      <!-- Assets -->
+      <a-asset-item id="avatar" src="assets/avatar.gltf"></a-asset-item>
+      <a-asset-item id="face_shield" src="assets/Face_shield.gltf"></a-asset-item>
+      
+      <!-- Mixin -->
+      <a-mixin id="touch" physics-collider phase-shift collision-filter="collisionForces: false"
+        static-body="shape: sphere; sphereRadius: 0.02" super-hands="colliderEvent: collisions;
+                          colliderEventProperty: els;
+                          colliderEndEvent: collisions;
+                          colliderEndEventProperty: clearedEls;">
+      </a-mixin>
+      <a-mixin id="point" raycaster="showLine: true; objects: .vxr-interact" collision-filter="collisionForces: false"
+      static-body="shape: sphere; sphereRadius: 0.001" super-hands="colliderEvent: raycaster-intersection;
+                  colliderEventProperty: els;
+                  colliderEndEvent:raycaster-intersection-cleared;
+                  colliderEndEventProperty: clearedEls;"></a-mixin>
+                  
+      <a-mixin id="cube" geometry="primitive: box; width: 0.33; height: 0.33; depth: 0.33"
+                 hoverable grabbable stretchable draggable
+                 event-set__hoveron="_event: hover-start; material.opacity: 0.7; transparent: true"
+                 event-set__hoveroff="_event: hover-end; material.opacity: 1; transparent: false"
+                 dynamic-body shadow></a-mixin>
 
+      <!-- Player -->
+      <template id="player-template">
+        <!-- <a-entity networked-audio-source="positional:false"></a-entity> -->
+        <!-- <a-box id="03" color="tomato" depth="1" height="1" width="1"></a-box> -->
+        <a-entity>
+
+        </a-entity>
+      </template>
+
+      <!-- Teacher Avatar Constraints -->
+      <template id="avatar-template">
+        <a-entity>
+          <!-- <a-entity class="name-up-teacher"></a-entity> -->
+          <!-- <a-box id="03" color="tomato" depth="1" height="1" width="1"></a-box> -->
+          <a-entity class="avatar" gltf-model="#avatar"></a-entity>
+        </a-entity>
+      </template>
+
+      <!-- Objects template -->
       <template id="objects-template">
         <a-entity>
-          <a-sphere class="obj" color="#f00" toggle-physics draggable grabbable radius="0.2" position="0 2 0"></a-sphere>
+          <!-- <a-sphere class="obj" color="#f00" toggle-physics draggable grabbable radius="0.2" position="0 2 0"></a-sphere> -->
+          <a-entity id="e-face_shield_01" class="obj" gltf-model="#face_shield" toggle-physics draggable grabbable position="0 2 0">
+        </a-entity>
+        </a-entity>
+      </template>
+
+      <!-- Hands -->
+      <template id="left-hand-template">
+        <a-entity>
+          <!-- <a-gltf-model class="tracked-left-hand" rotation="0 0 90" src="#left-hand-model"></a-gltf-model> -->
+          <a-box id="02" color="tomato" depth="0.1" height="0.1" width="0.1"></a-box>
+        </a-entity>
+      </template>
+
+      <template id="right-hand-template">
+        <a-entity>
+          <!-- <a-gltf-model class="tracked-right-hand" rotation="0 0 -90" src="#right-hand-model"></a-gltf-model> -->
+          <a-box id="01" color="tomato" depth="0.1" height="0.1" width="0.1"></a-box>
         </a-entity>
       </template>
 
     </a-assets>
 
+    <a-entity class="cube" mixin="cube" position="0 0.265 -1" material="color: red"></a-entity>
+    <a-entity class="cube" mixin="cube" position="0 0.265 -0.5" material="color: red"></a-entity>
+    <a-entity class="cube" mixin="cube" position="-1 0.265 -1" material="color: blue"></a-entity>
+    <a-entity class="cube" mixin="cube" position="-1 0.265 -0.5" material="color: blue"></a-entity>
+    <a-entity class="cube" mixin="cube" position="1 0.265 -1" material="color: green"></a-entity>
+    <a-entity class="cube" mixin="cube" position="1 0.265 -0.5" material="color: green"></a-entity>
 
     <a-entity class="syncup" position="0 1 0"></a-entity>
     <!-- <a-entity networked="template:#objects-template;attachTemplateToLocal:true;"></a-entity> -->
-
+    <!-- <a-sphere class="obj" color="#f00" toggle-physics dynamic-body draggable grabbable radius="0.2" position="0 0.5 1"></a-sphere> -->
 
     <!-- player -->
+    <a-entity id="player" networked="template:#player-template;attachTemplateToLocal:true;" position="0 0.1 -2"
+      rotation="0 0 0" movement-controls="speed:0.3">
+      <a-entity id="camera" camera position="0 0.5 0" look-controls
+        networked="template:#avatar-template;attachTemplateToLocal:false;">
+      </a-entity>
+      <!-- /VIVE CONTROLLERS -->
+      <a-entity id="lhand" mixin="touch" input-controls="hand: left"
+        networked="template:#left-hand-template">
+      </a-entity>
+      <a-entity id="rhand" mixin="touch" input-controls="hand: right"
+        networked="template:#right-hand-template">
+      </a-entity>
+
+    <!-- Player mouse -->
+
     <a-entity camera look-controls wasd-controls position="0 1 1" capture-mouse raycaster cursor="rayOrigin:mouse"
       body="type: static; shape: sphere; sphereRadius: 0.001" super-hands="colliderEvent: raycaster-intersection;
                             colliderEventProperty: els;
@@ -109,24 +175,6 @@
                             colliderEndEventProperty: clearedEls;" spawner="template:#objects-template">
     </a-entity>
 
-
-    <!-- magic cube -->
-
-    <a-entity class="transformer" position="0 1.6 -1" color-randomizer droppable body="type: static; shape: box"
-      geometry="primitive: box; width: 0.5; height: 0.5; depth: 0.5"
-      event-set__dragon="_event: dragover-start; material.color: orange"
-      event-set__dragoff="_event: dragover-end; material.color: purple" material="color:purple" shadow>
-
-      <a-entity text="value: Drag&drop to change color;
-                        width: 0.5; wrapCount: 12; align: center" position="0 0 0.25">
-      </a-entity>
-    </a-entity>
-    
-    <!-- <a-entity>
-      <a-box id="lock-target" position="0 1.0 0" scale="0.25 0.25 0.25" color="#777" static-body>
-      </a-box>
-
-    </a-entity> -->
 
     <a-box body="type: static; shape: box" width=100 height=0.001 depth=100 visible="false"></a-box>
   </a-scene>
@@ -154,8 +202,42 @@
           }
         ]
       });
-
-
+      NAF.schemas.add({
+        template: '#player-template',
+        components: [
+          'position',
+          'rotation',
+          {
+            selector: '.avatar',
+            component: 'position'
+          },
+          {
+            selector: '.avatar',
+            component: 'rotation'
+          }
+        ]
+      });
+      NAF.schemas.add({
+        template: '#avatar-template',
+        components: [
+          'position',
+          'rotation'
+        ]
+      });
+      NAF.schemas.add({
+        template: '#right-hand-template',
+        components: [
+          'position',
+          'rotation'
+        ]
+      });
+      NAF.schemas.add({
+        template: '#left-hand-template',
+        components: [
+          'position',
+          'rotation'
+        ]
+      });
 
     function onConnect() {
       console.log("funca", new Date());

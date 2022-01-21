@@ -63,13 +63,7 @@ AFRAME.registerComponent('input-controls', {
 
   onButtonEvent: function (id, evtName) {
     var buttonName = this.mapping['button' + id];
-    console.log("button name: ",buttonName)
-    console.log("evtName name: ", evtName)
-
     this.el.emit(buttonName + evtName);
-
-
-
   },
 
   update: function () {
