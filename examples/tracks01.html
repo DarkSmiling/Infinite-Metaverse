@@ -128,14 +128,16 @@
       <template id="left-hand-template">
         <a-entity>
           <!-- <a-gltf-model class="tracked-left-hand" rotation="0 0 90" src="#left-hand-model"></a-gltf-model> -->
-          <a-box id="02" color="tomato" depth="0.1" height="0.1" width="0.1"></a-box>
+          <!-- <a-box id="02" color="tomato" depth="0.1" height="0.1" width="0.1"></a-box> -->
+          <a-gltf-model class="tracked-right-hand" rotation="0 0 -90" src="#right-hand-model"></a-gltf-model>
         </a-entity>
       </template>
 
       <template id="right-hand-template">
         <a-entity>
           <!-- <a-gltf-model class="tracked-right-hand" rotation="0 0 -90" src="#right-hand-model"></a-gltf-model> -->
-          <a-box id="01" color="tomato" depth="0.1" height="0.1" width="0.1"></a-box>
+          <!-- <a-box id="01" color="tomato" depth="0.1" height="0.1" width="0.1"></a-box> -->
+          <a-gltf-model class="tracked-left-hand" rotation="0 0 90" src="#left-hand-model"></a-gltf-model>
         </a-entity>
       </template>
 
