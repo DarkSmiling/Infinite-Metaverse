@@ -75,10 +75,10 @@
 
     <a-assets>
       <!-- Assets -->
-      <a-asset-item id="avatar" src="./assets/avatar.gltf"></a-asset-item>
-      <a-asset-item id="face_shield" src="./assets/Face_shield.gltf"></a-asset-item>
-      <a-asset-item id="left-hand-model" src="./assets/leftHandHigh.glb"></a-asset-item>
-      <a-asset-item id="right-hand-model" src="./assets/rightHandHigh.glb"></a-asset-item>
+      <a-asset-item id="avatar" responseType="arraybuffer" src="./assets/avatar.gltf"></a-asset-item>
+      <a-asset-item id="face_shield" responseType="arraybuffer" src="./assets/Face_shield.gltf"></a-asset-item>
+      <a-asset-item id="left-hand-model" responseType="arraybuffer" src="./assets/leftHandHigh.glb"></a-asset-item>
+      <a-asset-item id="right-hand-model" responseType="arraybuffer" src="./assets/rightHandHigh.glb"></a-asset-item>
       
       <!-- Mixin -->
       <a-mixin id="touch" physics-collider phase-shift collision-filter="collisionForces: false"
