@@ -66,7 +66,7 @@
 </head>
 
 <body>
-  <a-scene physics="debug: true; gravity: -9; iterations: 0.1" environment="preset: tron; shadow: true" networked-scene="
+  <a-scene physics="debug: true; gravity: -5; iterations: 10" environment="preset: tron; shadow: true" networked-scene="
     room: dev;
     debug: true;
     adapter: wseasyrtc;
@@ -75,10 +75,8 @@
 
     <a-assets>
       <!-- Assets -->
-      <a-asset-item id="avatar" responseType="arraybuffer" src="./assets/avatar.gltf"></a-asset-item>
-      <a-asset-item id="face_shield" responseType="arraybuffer" src="./assets/Face_shield.gltf"></a-asset-item>
-      <a-asset-item id="left-hand-model" responseType="arraybuffer" src="./assets/leftHandHigh.glb"></a-asset-item>
-      <a-asset-item id="right-hand-model" responseType="arraybuffer" src="./assets/rightHandHigh.glb"></a-asset-item>
+      <a-asset-item id="avatar" src="avatar.gltf"></a-asset-item>
+      <a-asset-item id="face_shield" src="Face_shield.gltf"></a-asset-item>
       
       <!-- Mixin -->
       <a-mixin id="touch" physics-collider phase-shift collision-filter="collisionForces: false"
@@ -113,7 +111,7 @@
         <a-entity>
           <!-- <a-entity class="name-up-teacher"></a-entity> -->
           <!-- <a-box id="03" color="tomato" depth="1" height="1" width="1"></a-box> -->
-          <a-entity class="avatar" gltf-model="#right-hand-model"></a-entity>
+          <a-entity class="avatar" gltf-model="#avatar"></a-entity>
         </a-entity>
       </template>
 
@@ -121,8 +119,7 @@
       <template id="objects-template">
         <a-entity>
           <!-- <a-sphere class="obj" color="#f00" toggle-physics draggable grabbable radius="0.2" position="0 2 0"></a-sphere> -->
-          <a-entity id="e-face_shield_01" class="obj" gltf-model="#left-hand-model" toggle-physics draggable grabbable position="0 2 0">
-        </a-entity>
+          <a-entity id="e-face_shield_01" class="obj" gltf-model="#face_shield" toggle-physics grabbable draggable position="0 2 0"></a-entity>
         </a-entity>
       </template>
 
@@ -131,7 +128,7 @@
         <a-entity>
           <!-- <a-gltf-model class="tracked-left-hand" rotation="0 0 90" src="#left-hand-model"></a-gltf-model> -->
           <!-- <a-box id="02" color="tomato" depth="0.1" height="0.1" width="0.1"></a-box> -->
-          <a-gltf-model class="tracked-left-hand" rotation="0 0 90" src="#left-hand-model"></a-gltf-model>
+          <a-gltf-model class="tracked-right-hand" rotation="0 0 -90" src="#right-hand-model"></a-gltf-model>
         </a-entity>
       </template>
 
@@ -139,51 +136,55 @@
         <a-entity>
           <!-- <a-gltf-model class="tracked-right-hand" rotation="0 0 -90" src="#right-hand-model"></a-gltf-model> -->
           <!-- <a-box id="01" color="tomato" depth="0.1" height="0.1" width="0.1"></a-box> -->
-          <a-gltf-model class="tracked-right-hand" rotation="0 0 -90" src="#right-hand-model"></a-gltf-model>
+          <a-gltf-model class="tracked-left-hand" rotation="0 0 90" src="#left-hand-model"></a-gltf-model>
         </a-entity>
       </template>
 
     </a-assets>
 
-    <a-entity class="cube" mixin="cube" position="0 0.265 -1" material="color: red"></a-entity>
-    <a-entity class="cube" mixin="cube" position="0 0.265 -0.5" material="color: red"></a-entity>
-    <a-entity class="cube" mixin="cube" position="-1 0.265 -1" material="color: blue"></a-entity>
-    <a-entity class="cube" mixin="cube" position="-1 0.265 -0.5" material="color: blue"></a-entity>
-    <a-entity class="cube" mixin="cube" position="1 0.265 -1" material="color: green"></a-entity>
-    <a-entity class="cube" mixin="cube" position="1 0.265 -0.5" material="color: green"></a-entity>
+      <a-entity class="cube" mixin="cube" position="0 0.265 -1" material="color: red"></a-entity>
+      <a-entity class="cube" mixin="cube" position="0 0.265 -0.5" material="color: red"></a-entity>
+      <a-entity class="cube" mixin="cube" position="-1 0.265 -1" material="color: blue"></a-entity>
+      <a-entity class="cube" mixin="cube" position="-1 0.265 -0.5" material="color: blue"></a-entity>
+      <a-entity class="cube" mixin="cube" position="1 0.265 -1" material="color: green"></a-entity>
+      <a-entity class="cube" mixin="cube" position="1 0.265 -0.5" material="color: green"></a-entity>
 
-    <a-entity class="syncup" position="0 1 0"></a-entity>
-    <a-entity networked="template:#objects-template;attachTemplateToLocal:true;"></a-entity>
-    <a-sphere class="obj" color="#f00" toggle-physics dynamic-body draggable grabbable radius="0.2" position="0 0.5 1"></a-sphere>
-    <a-entity id="e-face_shield_01" class="obj" gltf-model="#face_shield" toggle-physics dynamic-body grabbable draggable position="0 2 0"></a-entity>
+      <a-entity class="syncup" position="0 1 0"></a-entity>
+      <a-entity class="syncup" position="1 1 0"></a-entity>
+      <a-entity class="syncup" position="-1 1 0"></a-entity>
+      <!-- <a-entity id="01" networked="template:#objects-template;attachTemplateToLocal:true;"></a-entity> -->
+      <!-- <a-sphere class="obj" color="#f00" toggle-physics dynamic-body draggable grabbable radius="0.2" position="0 0.5 1"></a-sphere> -->
+      <!-- <a-entity id="e-face_shield_01" class="obj" gltf-model="#face_shield" toggle-physics dynamic-body grabbable draggable position="0 2 0"></a-entity> -->
 
-    <!-- player -->
-    <a-entity id="player" networked="template:#player-template;attachTemplateToLocal:true;" position="0 0.1 -2"
+      <!-- player -->
+      <a-entity id="player" networked="template:#player-template;attachTemplateToLocal:true;" position="0 0.1 -2"
       rotation="0 0 0" movement-controls="speed:0.3">
       <a-entity id="camera" camera position="0 0.5 0" look-controls
-        networked="template:#avatar-template;attachTemplateToLocal:false;">
+      networked="template:#avatar-template;attachTemplateToLocal:false;">
       </a-entity>
       <!-- /VIVE CONTROLLERS -->
       <a-entity id="lhand" mixin="touch" input-controls="hand: left"
-        networked="template:#left-hand-template;attachTemplateToLocal:true;">
+      networked="template:#left-hand-template;attachTemplateToLocal:true;">
       </a-entity>
       <a-entity id="rhand" mixin="touch" input-controls="hand: right"
-        networked="template:#right-hand-template;attachTemplateToLocal:true;">
+      networked="template:#right-hand-template;attachTemplateToLocal:true;">
+    </a-entity>
+    </a-entity>
+
+      <!-- Player mouse -->
+
+      <a-entity camera look-controls wasd-controls position="0 1 1" capture-mouse raycaster cursor="rayOrigin:mouse"
+        body="type: static; shape: sphere; sphereRadius: 0.001" super-hands="colliderEvent: raycaster-intersection;
+              colliderEventProperty: els;
+              colliderEndEvent:raycaster-intersection-cleared;
+              colliderEndEventProperty: clearedEls;" spawner="template:#objects-template">
       </a-entity>
-    </a-entity>
-
-    <!-- Player mouse -->
-
-    <a-entity camera look-controls wasd-controls position="0 1 1" capture-mouse raycaster cursor="rayOrigin:mouse"
-      body="type: static; shape: sphere; sphereRadius: 0.001" super-hands="colliderEvent: raycaster-intersection;
-                            colliderEventProperty: els;
-                            colliderEndEvent:raycaster-intersection-cleared;
-                            colliderEndEventProperty: clearedEls;" spawner="template:#objects-template">
-    </a-entity>
 
 
     <a-box body="type: static; shape: box" width=100 height=0.001 depth=100 visible="false"></a-box>
   </a-scene>
+
+
 
   <script>
     NAF.schemas.add({
