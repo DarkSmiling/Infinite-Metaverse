@@ -4,8 +4,7 @@
     <title>Dev Example — Networked-Aframe</title>
     <meta name="description" content="Dev Example — Networked-Aframe">
 
-    <!-- <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script> -->
-    <script src="super/build.js"></script>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.slim.js"></script>
     <script src="/easyrtc/easyrtc.js"></script>
     <script src="/dist/networked-aframe.js"></script>
@@ -44,7 +43,7 @@
       adapter: wseasyrtc;
     ">
       <a-assets>
-        <a-asset-item id="avatar" responseType="arraybuffer" src="./assets/avatar.gltf"></a-asset-item>
+
         <img id="grid" src="https://img.gs/bbdkhfbzkk/stretch/https://i.imgur.com/25P1geh.png" crossorigin="anonymous">
         <img id="sky" src="https://i.imgur.com/WqlqEkq.jpg" crossorigin="anonymous" />
 
@@ -100,7 +99,7 @@
           random-color
         ></a-sphere>
       </a-entity>
-      <a-entity id="e-face_shield_01" class="obj" gltf-model="#avatar" position="0 2 0"></a-entity>
+
       <a-entity position="0 0 0"
         geometry="primitive: plane; width: 10000; height: 10000;" rotation="-90 0 0"
         material="src: #grid; repeat: 10000 10000; transparent: true; metalness:0.6; roughness: 0.4; sphericalEnvMap: #sky;"></a-entity>
