@@ -66,7 +66,7 @@
 </head>
 
 <body>
-  <a-scene physics="debug: true; gravity: -5; iterations: 10" environment="preset: tron; shadow: true" networked-scene="
+  <a-scene physics="debug: true; gravity: -1; iterations: 900" environment="preset: tron; shadow: true" networked-scene="
     room: dev;
     debug: true;
     adapter: wseasyrtc;
@@ -142,14 +142,25 @@
 
     </a-assets>
 
-      <a-entity class="cube" mixin="cube" position="0 0.265 -1" material="color: red"></a-entity>
-      <a-entity class="cube" mixin="cube" position="0 0.265 -0.5" material="color: red"></a-entity>
-      <a-entity class="cube" mixin="cube" position="-1 0.265 -1" material="color: blue"></a-entity>
-      <a-entity class="cube" mixin="cube" position="-1 0.265 -0.5" material="color: blue"></a-entity>
-      <a-entity class="cube" mixin="cube" position="1 0.265 -1" material="color: green"></a-entity>
-      <a-entity class="cube" mixin="cube" position="1 0.265 -0.5" material="color: green"></a-entity>
+      <a-box id="03" color="tomato" scale="1.047 0.311 0.509" position="0 0.148 0" static-body></a-box>
+      
+      <a-box class="cube" position="0 0.321 0" scale="0.12 0.030 0.04" material="color: brown" dynamic-body="mass:1; linearDamping:0.05" grabbable draggable></a-box>
+      <a-box class="cube" position="0 0.321 0.038" scale="0.12 0.030 0.04" material="color: brown" dynamic-body="mass:1; linearDamping:0.05" grabbable draggable></a-box>
+      <a-box class="cube" position="0 0.321 0.076" scale="0.12 0.030 0.04" material="color: brown" dynamic-body="mass:1; linearDamping:0.05" grabbable draggable></a-box>
 
-      <a-entity class="syncup" position="0 1 0"></a-entity>
+      <a-box class="cube" position="-0.038 0.35 0.038" rotation="0 90 0" scale="0.12 0.030 0.04" material="color: brown" dynamic-body="mass:1; linearDamping:0.05" grabbable draggable></a-box>
+      <a-box class="cube" position="0.004 0.35 0.037" rotation="0 90 0" scale="0.12 0.030 0.04" material="color: brown" dynamic-body="mass:1; linearDamping:0.05" grabbable draggable></a-box>
+      <a-box class="cube" position="0.041 0.35 0.037" rotation="0 90 0" scale="0.12 0.030 0.04" material="color: brown" dynamic-body="mass:1; linearDamping:0.05" grabbable draggable></a-box>
+
+      <a-box class="cube" position="0 0.38 0" scale="0.12 0.030 0.04" material="color: brown" dynamic-body="mass:1; linearDamping:0.05" grabbable draggable></a-box>
+      <a-box class="cube" position="0 0.38 0.038" scale="0.12 0.030 0.04" material="color: brown" dynamic-body="mass:1; linearDamping:0.05" grabbable draggable></a-box>
+      <a-box class="cube" position="0 0.38 0.076" scale="0.12 0.030 0.04" material="color: brown" dynamic-body="mass:1; linearDamping:0.05" grabbable draggable></a-box>
+
+      <a-box class="cube" position="-0.038 0.41 0.038" rotation="0 90 0" scale="0.12 0.030 0.04" material="color: brown" dynamic-body="mass:1; linearDamping:0.05" grabbable draggable></a-box>
+      <a-box class="cube" position="0.004 0.41 0.037" rotation="0 90 0" scale="0.12 0.030 0.04" material="color: brown" dynamic-body="mass:1; linearDamping:0.05" grabbable draggable></a-box>
+      <a-box class="cube" position="0.041 0.41 0.037" rotation="0 90 0" scale="0.12 0.030 0.04" material="color: brown" dynamic-body="mass:1; linearDamping:0.05" grabbable draggable></a-box>
+
+      <!-- <a-entity class="syncup" position="0 1 0"></a-entity> -->
       <a-entity class="syncup" position="1 1 0"></a-entity>
       <a-entity class="syncup" position="-1 1 0"></a-entity>
       <!-- <a-entity id="01" networked="template:#objects-template;attachTemplateToLocal:true;"></a-entity> -->
@@ -157,7 +168,7 @@
       <!-- <a-entity id="e-face_shield_01" class="obj" gltf-model="#face_shield" toggle-physics dynamic-body grabbable draggable position="0 2 0"></a-entity> -->
 
       <!-- player -->
-      <a-entity id="player" networked="template:#player-template;attachTemplateToLocal:true;" position="0 0.1 -2"
+      <a-entity id="player" networked="template:#player-template;attachTemplateToLocal:true;" position="0 0.1 0.6"
       rotation="0 0 0" movement-controls="speed:0.3">
       <a-entity id="camera" camera position="0 0.5 0" look-controls
       networked="template:#avatar-template;attachTemplateToLocal:false;">
