@@ -119,8 +119,9 @@
       <!-- Objects template -->
       <template id="objects-template">
         <a-entity>
-          <!-- <a-sphere class="obj" color="#f00" toggle-physics draggable grabbable radius="0.2" position="0 2 0"></a-sphere> -->
-          <a-entity id="e-face_shield_01" class="obj" gltf-model="#avatar" toggle-physics grabbable draggable position="0 2 0"></a-entity>
+          <a-sphere class="obj" color="#f00" toggle-physics draggable grabbable radius="0.2" position="0 2 0"></a-sphere>
+          <!-- <a-entity id="e-face_shield_01" class="obj" gltf-model="#avatar" toggle-physics grabbable draggable position="0 2 0"></a-entity> -->
+          <!-- <a-entity class="cube" mixin="cube" material="color: red"></a-entity> -->
         </a-entity>
       </template>
 
@@ -128,16 +129,16 @@
       <template id="left-hand-template">
         <a-entity>
           <!-- <a-gltf-model class="tracked-left-hand" rotation="0 0 90" src="#left-hand-model"></a-gltf-model> -->
-          <!-- <a-box id="02" color="tomato" depth="0.1" height="0.1" width="0.1"></a-box> -->
-          <a-gltf-model class="tracked-right-hand" rotation="0 0 -90" src="#right-hand-model"></a-gltf-model>
+          <a-box id="02" color="tomato" depth="0.1" height="0.1" width="0.1"></a-box>
+          <!-- <a-gltf-model class="tracked-right-hand" rotation="0 0 -90" src="#right-hand-model"></a-gltf-model> -->
         </a-entity>
       </template>
 
       <template id="right-hand-template">
         <a-entity>
           <!-- <a-gltf-model class="tracked-right-hand" rotation="0 0 -90" src="#right-hand-model"></a-gltf-model> -->
-          <!-- <a-box id="01" color="tomato" depth="0.1" height="0.1" width="0.1"></a-box> -->
-          <a-gltf-model class="tracked-left-hand" rotation="0 0 90" src="#left-hand-model"></a-gltf-model>
+          <a-box id="01" color="tomato" depth="0.1" height="0.1" width="0.1"></a-box>
+          <!-- <a-gltf-model class="tracked-left-hand" rotation="0 0 90" src="#left-hand-model"></a-gltf-model> -->
         </a-entity>
       </template>
 
