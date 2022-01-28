@@ -56,10 +56,10 @@
 
 <script>
   function crapIsReady() {
-    // let syncs = document.getElementsByClassName("syncup");
-    // for (let i=0; i<syncs.length; ++i) {
-    //   syncs[i].setAttribute("networked", "template:#objects-template;attachTemplateToLocal:true")
-    // }
+    let syncs = document.getElementsByClassName("syncup");
+    for (let i=0; i<syncs.length; ++i) {
+      syncs[i].setAttribute("networked", "template:#objects-template;attachTemplateToLocal:true")
+    }
   }
 </script>
 
@@ -70,12 +70,13 @@
     room: dev;
     debug: true;
     adapter: wseasyrtc;
-    onConnect: ;
+    onConnect: crapIsReady;
   ">
 
     <a-assets>
       <!-- Assets -->
-      <a-asset-item id="avatar" src="avatar.gltf"></a-asset-item>
+      <a-asset-item id="avatar" src="https://cdn.glitch.global/281c450c-b582-4e42-a57f-e56cbf5855b0/avatar.gltf?v=1643228256775"></a-asset-item>
+      <!-- <a-asset-item id="avatar" src="avatar.gltf"></a-asset-item> -->
       <a-asset-item id="face_shield" src="Face_shield.gltf"></a-asset-item>
       
       <!-- Mixin -->
@@ -119,8 +120,7 @@
       <template id="objects-template">
         <a-entity>
           <!-- <a-sphere class="obj" color="#f00" toggle-physics draggable grabbable radius="0.2" position="0 2 0"></a-sphere> -->
-          <a-entity id="e-face_shield_01" class="obj" gltf-model="#face_shield" toggle-physics grabbable draggable position="0 2 0">
-        </a-entity>
+          <a-entity id="e-face_shield_01" class="obj" gltf-model="#avatar" toggle-physics grabbable draggable position="0 2 0"></a-entity>
         </a-entity>
       </template>
 
@@ -143,32 +143,29 @@
 
     </a-assets>
 
-    <!-- <a-entity networked="template:#objects-template;attachTemplateToLocal:true;"></a-entity> -->
-    <!-- <a-sphere class="obj" color="#f00" toggle-physics dynamic-body draggable grabbable radius="0.2" position="0 0.5 1"></a-sphere> -->
-
-    <!-- player -->
-    <a-entity id="player" networked="template:#player-template;attachTemplateToLocal:true;" position="0 0.1 -2"
+      <!-- player -->
+      <a-entity id="player" networked="template:#player-template;attachTemplateToLocal:true;" position="0 0.1 -2"
       rotation="0 0 0" movement-controls="speed:0.3">
       <a-entity id="camera" camera position="0 0.5 0" look-controls
-        networked="template:#avatar-template;attachTemplateToLocal:false;">
+      networked="template:#avatar-template;attachTemplateToLocal:false;">
       </a-entity>
       <!-- /VIVE CONTROLLERS -->
       <a-entity id="lhand" mixin="touch" input-controls="hand: left"
-        networked="template:#left-hand-template">
+      networked="template:#left-hand-template;attachTemplateToLocal:true;">
       </a-entity>
       <a-entity id="rhand" mixin="touch" input-controls="hand: right"
-        networked="template:#right-hand-template">
-      </a-entity>
+      networked="template:#right-hand-template;attachTemplateToLocal:true;">
+    </a-entity>
     </a-entity>
 
-    <!-- Player mouse -->
+      <!-- Player mouse -->
 
-    <!-- <a-entity camera look-controls wasd-controls position="0 1 1" capture-mouse raycaster cursor="rayOrigin:mouse"
-      body="type: static; shape: sphere; sphereRadius: 0.001" super-hands="colliderEvent: raycaster-intersection;
-                            colliderEventProperty: els;
-                            colliderEndEvent:raycaster-intersection-cleared;
-                            colliderEndEventProperty: clearedEls;" spawner="template:#objects-template">
-    </a-entity> -->
+      <!-- <a-entity camera look-controls wasd-controls position="0 1 1" capture-mouse raycaster cursor="rayOrigin:mouse"
+        body="type: static; shape: sphere; sphereRadius: 0.001" super-hands="colliderEvent: raycaster-intersection;
+              colliderEventProperty: els;
+              colliderEndEvent:raycaster-intersection-cleared;
+              colliderEndEventProperty: clearedEls;" spawner="template:#objects-template">
+      </a-entity> -->
 
 
     <a-box body="type: static; shape: box" width=100 height=0.001 depth=100 visible="false"></a-box>
