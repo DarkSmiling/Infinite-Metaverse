@@ -21,10 +21,10 @@
   <script>
     AFRAME.registerComponent("nav", {
       init: function() {
-        this.el.addEventListener("touchstart", e => {
+        this.el.addEventListener("click", e => {
           let player = document.getElementById('player');
           let playerPos = player.getAttribute('position');
-          console.log(player.getAttribute('position'));
+          console.log("player",player.getAttribute('position'));
           // log the points
           console.log(e.detail.intersection.point)
           let point = e.detail.intersection.point
@@ -34,7 +34,21 @@
           player.setAttribute('animation',`property:position; from: ${playerPos.x} ${playerPos.y} ${playerPos.z} ; to: ${pointb.x } ${pointb.y} ${pointb.z}; dur: 2000; `);
           console.log(playerPos.x);
           console.log(point.x);
-          })
+        })
+        this.el.addEventListener("touchstart", e => {
+          let player = document.getElementById('player');
+          let playerPos = player.getAttribute('position');
+          console.log("player",player.getAttribute('position'));
+          // log the points
+          console.log(e.detail.intersection.point)
+          let point = e.detail.intersection.point
+          console.log("point: ",point)
+          let pointb = ({x: parseFloat(point.x.toFixed(2)), y: parseFloat(point.y.toFixed(2)), z: parseFloat(point.z.toFixed(2))})
+          pointb.y=0.5;
+          player.setAttribute('animation',`property:position; from: ${playerPos.x} ${playerPos.y} ${playerPos.z} ; to: ${pointb.x } ${pointb.y} ${pointb.z}; dur: 2000; `);
+          console.log(playerPos.x);
+          console.log(point.x);
+        })
       }
     })
   </script>
