@@ -18,7 +18,26 @@
   <script src="js/toggle-physics.component.js"></script>
   <script src="js/rotator.component.js"></script>
   <script src="js/input.component.js"></script>
-
+  <script>
+    AFRAME.registerComponent("nav", {
+      init: function() {
+        this.el.addEventListener("touchstart", e => {
+          let player = document.getElementById('player');
+          let playerPos = player.getAttribute('position');
+          console.log(player.getAttribute('position'));
+          // log the points
+          console.log(e.detail.intersection.point)
+          let point = e.detail.intersection.point
+          console.log("point: ",point)
+          let pointb = ({x: parseFloat(point.x.toFixed(2)), y: parseFloat(point.y.toFixed(2)), z: parseFloat(point.z.toFixed(2))})
+          pointb.y=0.5;
+          player.setAttribute('animation',`property:position; from: ${playerPos.x} ${playerPos.y} ${playerPos.z} ; to: ${pointb.x } ${pointb.y} ${pointb.z}; dur: 2000; `);
+          console.log(playerPos.x);
+          console.log(point.x);
+          })
+      }
+    })
+  </script>
   <script>
     AFRAME.registerComponent('hemispherelight', {
       init: function () {
@@ -173,12 +192,12 @@
       <!-- LIGHTS -->
       <a-entity light="type: ambient; color: #BBB" visible="false"></a-entity>
       <a-entity id="directional" light="type: directional; color: #ffffff; intensity: 0.2; castShadow: true" position="8.35 5.13 1.3"></a-entity>
-      <a-entity id="hemisphere" light="type: hemisphere; color: #af9ffe; groundColor: #ffffff; intensity: 0.320" position="0 5 0"></a-entity>
+      <a-entity id="hemisphere" light="type: hemisphere; color: #af9ffe; groundColor: #ffffff; intensity: 0.51" position="0 5 0"></a-entity>
       <!-- <a-entity light="type: point; intensity: 0.75; distance: 50; decay: 2; castShadow: false" position="0 3 0"></a-entity> -->
       
       <!-- player -->
       <a-entity id="player" networked="template:#player-template;attachTemplateToLocal:true;" position="0 0.1 2"
-      rotation="0 0 0" movement-controls="speed:0.3">
+      rotation="0 0 0" >
       <a-entity id="camera" camera position="0 0.5 0" look-controls capture-mouse cursor="rayOrigin:mouse"
         body="type: static; shape: sphere; sphereRadius: 0.001" super-hands="colliderEvent: raycaster-intersection;
               colliderEventProperty: els;
@@ -197,7 +216,7 @@
 
       <!-- Ground -->
 
-      <a-box body="type: static; shape: box" width=100 height=0.1 depth=100 visible="true" shadow="cast:true; receive:true"></a-box>
+      <a-box body="type: static; shape: box" width=100 height=0.1 depth=100 visible="true" shadow="cast:true; receive:true" nav></a-box>
       
 
 
