@@ -19,47 +19,30 @@
   <script src="js/rotator.component.js"></script>
   <script src="js/input.component.js"></script>
   <script>
-    AFRAME.registerComponent("nav", {
-      init: function() {
-        this.el.addEventListener("click", e => {
-          let player = document.getElementById('player');
-          let playerPos = player.getAttribute('position');
-          console.log("player",player.getAttribute('position'));
-          // log the points
-          console.log(e.detail.intersection.point)
-          let point = e.detail.intersection.point
-          console.log("point: ",point)
-          let pointb = ({x: parseFloat(point.x.toFixed(2)), y: parseFloat(point.y.toFixed(2)), z: parseFloat(point.z.toFixed(2))})
-          pointb.y=0.5;
-          player.setAttribute('animation',`property:position; from: ${playerPos.x} ${playerPos.y} ${playerPos.z} ; to: ${pointb.x } ${pointb.y} ${pointb.z}; dur: 2000; `);
-          console.log(playerPos.x);
-          console.log(point.x);
+    AFRAME.registerComponent('sphere', {
+      schema: {
+      color: {type: 'color', default: '#e710eb'},
+      intensity: {type: 'number', default: 0.1}
+      },
+      update: function() {
+        this.el.setObject3D('pointlight', new THREE.PointLight(this.data.color, this.data.intensity, 20));
+        let pointlight = this.el.getObject3D('pointlight');
+        pointlight.castShadow = true;
+        
+        var material1 = new THREE.MeshPhongMaterial( {
+            color: this.data.color,
+						side: THREE.DoubleSide,
+						alphaTest: 1,
+            shininess: 100,
+            specular: this.data.color
+					} );
+        var material = new THREE.MeshBasicMaterial({
+          color: this.data.color,
+          wireframe: false
         })
-        this.el.addEventListener("touchstart", e => {
-          let player = document.getElementById('player');
-          let playerPos = player.getAttribute('position');
-          console.log("player",player.getAttribute('position'));
-          // log the points
-          console.log(e.detail.intersection.point)
-          let point = e.detail.intersection.point
-          console.log("point: ",point)
-          let pointb = ({x: parseFloat(point.x.toFixed(2)), y: parseFloat(point.y.toFixed(2)), z: parseFloat(point.z.toFixed(2))})
-          pointb.y=0.5;
-          player.setAttribute('animation',`property:position; from: ${playerPos.x} ${playerPos.y} ${playerPos.z} ; to: ${pointb.x } ${pointb.y} ${pointb.z}; dur: 2000; `);
-          console.log(playerPos.x);
-          console.log(point.x);
-        })
-      }
-    })
-  </script>
-  <script>
-    AFRAME.registerComponent('hemispherelight', {
-      init: function () {
-        this.el.setObject3D('hemispherelight', new THREE.HemisphereLight( 0xffffff, 0xffffff, 1 ));
-        let hemispherelight = this.el.getObject3D('hemispherelight');
-        hemispherelight.color.setHSL( 0.6, 1, 0.6 );
-        hemispherelight.groundColor.setHSL( 0.095, 1, 0.75 );
-        hemispherelight.position.set( 0, 1, 0 );
+        var geometry = new THREE.SphereGeometry( 0.2, 32, 16 );
+        let sphere = this.el.setObject3D('mesh', new THREE.Mesh(geometry, material1));
+        pointlight.sphere;
       }
     });    
   </script>
@@ -163,7 +146,8 @@
       <!-- Objects template -->
       <template id="objects-template">
         <a-entity>
-          <a-sphere class="obj" color="#f00" toggle-physics draggable grabbable shadow="cast:true; receive:true" radius="0.2" position="0 2 0"></a-sphere>
+          <a-entity class="obj" id="sphere" sphere toggle-physics draggable grabbable position="0 2 0" shadow="cast:true; receive:false"> </a-entity>
+          <!-- <a-sphere class="obj" color="#f00" toggle-physics draggable grabbable shadow="cast:true; receive:true" radius="0.2" position="0 2 0"></a-sphere> -->
           <!-- <a-entity id="e-face_shield_01" class="obj" gltf-model="#avatar" toggle-physics grabbable draggable position="0 2 0"></a-entity> -->
           <!-- <a-entity class="cube" mixin="cube" material="color: red"></a-entity> -->
         </a-entity>
@@ -198,6 +182,7 @@
       <a-entity class="syncup" position="1 1 0"></a-entity>
       <a-entity class="syncup" position="-1 1 0"></a-entity>
       <a-entity class="cube" mixin="cube" position="1 0.265 -0.5" material="color: green"></a-entity>>
+      <!-- <a-entity id="sphere" sphere position="0 2 0"> </a-entity> -->
       <!-- <a-entity id="01" networked="template:#objects-template;attachTemplateToLocal:true;"></a-entity> -->
       <!-- <a-sphere class="obj" color="#f00" toggle-physics dynamic-body draggable grabbable radius="0.2" position="0 0.5 1"></a-sphere> -->
       <!-- <a-entity id="e-face_shield_01" class="obj" gltf-model="#face_shield" toggle-physics dynamic-body grabbable draggable position="0 2 0"></a-entity> -->
@@ -211,7 +196,7 @@
       
       <!-- player -->
       <a-entity id="player" networked="template:#player-template;attachTemplateToLocal:true;" position="0 0.1 2"
-      rotation="0 0 0" >
+      rotation="0 0 0" movement-controls="speed:0.3">
       <a-entity id="camera" camera position="0 0.5 0" look-controls capture-mouse cursor="rayOrigin:mouse"
         body="type: static; shape: sphere; sphereRadius: 0.001" super-hands="colliderEvent: raycaster-intersection;
               colliderEventProperty: els;
@@ -230,7 +215,7 @@
 
       <!-- Ground -->
 
-      <a-box body="type: static; shape: box" width=100 height=0.1 depth=100 visible="true" shadow="cast:true; receive:true" nav></a-box>
+      <a-box body="type: static; shape: box" width=100 height=0.1 depth=100 visible="true" shadow="cast:true; receive:true"></a-box>
       
 
 
