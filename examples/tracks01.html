@@ -88,6 +88,19 @@
         }
       });   
   </script>
+  <script>
+    AFRAME.registerComponent('thumbstick-logging',{
+      init: function () {
+        this.el.addEventListener('abuttondown', this.logThumbstick);
+      },
+      logThumbstick: function (evt) {
+        if (evt.detail.y > 0.95) { console.log("DOWN"); }
+        if (evt.detail.y < -0.95) { console.log("UP"); }
+        if (evt.detail.x < -0.95) { console.log("LEFT"); }
+        if (evt.detail.x > 0.95) { console.log("RIGHT"); }
+      }
+    });
+  </script>
 
   <script>
     //color randomizer
@@ -147,6 +160,8 @@
       <a-asset-item id="avatar" src="https://cdn.glitch.global/281c450c-b582-4e42-a57f-e56cbf5855b0/avatar.gltf?v=1643228256775"></a-asset-item>
       <!-- <a-asset-item id="avatar" src="avatar.gltf"></a-asset-item> -->
       <a-asset-item id="face_shield" src="Face_shield.gltf"></a-asset-item>
+      <a-asset-item id="handR" src="assets/leftHandHigh.glb"></a-asset-item>
+      <a-asset-item id="handL" src="assets/rightHandHigh.glb"></a-asset-item>
       
       <!-- Mixin -->
       <a-mixin id="touch" physics-collider phase-shift collision-filter="collisionForces: false"
@@ -199,17 +214,15 @@
       <!-- Hands -->
       <template id="left-hand-template">
         <a-entity>
-          <!-- <a-gltf-model class="tracked-left-hand" rotation="0 0 90" src="#left-hand-model"></a-gltf-model> -->
-          <a-box id="02" color="tomato" depth="0.1" height="0.1" width="0.1"></a-box>
-          <!-- <a-gltf-model class="tracked-right-hand" rotation="0 0 -90" src="#right-hand-model"></a-gltf-model> -->
+          <a-entity class="handl" gltf-model="#handL"></a-entity>
+          <!-- <a-box id="02" color="tomato" depth="0.1" height="0.1" width="0.1"></a-box> -->
         </a-entity>
       </template>
 
       <template id="right-hand-template">
         <a-entity>
-          <!-- <a-gltf-model class="tracked-right-hand" rotation="0 0 -90" src="#right-hand-model"></a-gltf-model> -->
-          <a-box id="01" color="tomato" depth="0.1" height="0.1" width="0.1"></a-box>
-          <!-- <a-gltf-model class="tracked-left-hand" rotation="0 0 90" src="#left-hand-model"></a-gltf-model> -->
+          <!-- <a-box id="01" color="tomato" depth="0.1" height="0.1" width="0.1"></a-box> -->
+          <a-entity class="handr" gltf-model="#handR"></a-entity>
         </a-entity>
       </template>
 
@@ -221,11 +234,7 @@
       <a-entity class="cube" mixin="cube" position="-1 0.265 -0.5" material="color: blue"></a-entity>
       <a-entity class="cube" mixin="cube" position="1 0.265 -1" material="color: green"></a-entity>
       <a-entity class="cube" mixin="cube" position="1 0.265 -0.5" material="color: green"></a-entity> -->
-      <!-- <a-entity class="syncup" position="0 1 0"></a-entity>
-      <a-entity class="syncup" position="1 1 0"></a-entity>
-      <a-entity class="syncup" position="-1 1 0"></a-entity>
-      <a-entity class="cube" mixin="cube" position="1 0.265 -0.5" material="color: green"></a-entity>>
-      <a-entity id="sphere" sphere get position="0 2 0"> </a-entity> -->
+
       <!-- <a-entity id="01" networked="template:#objects-template;attachTemplateToLocal:true;"></a-entity> -->
       <!-- <a-sphere class="obj" color="#f00" toggle-physics dynamic-body draggable grabbable radius="0.2" position="0 0.5 1"></a-sphere> -->
       <!-- <a-entity id="e-face_shield_01" class="obj" gltf-model="#face_shield" toggle-physics dynamic-body grabbable draggable position="0 2 0"></a-entity> -->
