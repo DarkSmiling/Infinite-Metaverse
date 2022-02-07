@@ -91,7 +91,24 @@
   <script>
     AFRAME.registerComponent('thumbstick-logging',{
       init: function () {
-        this.el.addEventListener('abuttondown', this.logThumbstick);
+        this.el.addEventListener('abuttondown', function(evt){
+          let handR = document.getElementById("BOXR02")
+          let handL = document.getElementById("BOXL02")
+          handR.setAttribute("visible","true")
+          handL.setAttribute("visible","true")
+          handR.setAttribute("static-body","")
+          handL.setAttribute("static-body","")
+        });
+        
+        this.el.addEventListener('abuttonup', function(evt){
+        
+          let handR = document.getElementById("BOXR02")
+          let handL = document.getElementById("BOXL02")
+          handR.setAttribute("visible","false")
+          handL.setAttribute("visible","false")
+          handR.removeAttribute("static-body")
+          handL.removeAttribute("static-body")
+        })
 
       },
       logThumbstick: function (evt) {
@@ -259,13 +276,13 @@
         networked="template:#avatar-template;attachTemplateToLocal:false;">
       </a-entity>
       <!-- /VIVE CONTROLLERS -->
-      <a-entity id="lhand" mixin="touch" input-controls="hand: left"
+      <a-entity id="lhand" mixin="touch" input-controls="hand: left" thumbstick-logging
         networked="template:#left-hand-template;attachTemplateToLocal:true;">
-        <a-box id="02" color="tomato" depth="0.02" height="0.02" width="0.02" position="0.026 0.008 -0.112"></a-box>
+        <a-box id="BOXL02" color="green" depth="0.02" height="0.02" width="0.02" position="0.026 0.008 -0.112"></a-box>
       </a-entity>
-      <a-entity id="rhand" mixin="touch" input-controls="hand: right"
+      <a-entity id="rhand" mixin="touch" input-controls="hand: right" thumbstick-logging
         networked="template:#right-hand-template;attachTemplateToLocal:true;">
-        <a-box id="02" color="tomato" depth="0.02" height="0.02" width="0.02" position="-0.04 0.008 -0.112"></a-box>
+        <a-box id="BOXR02" color="green" depth="0.02" height="0.02" width="0.02" position="-0.04 0.008 -0.112"></a-box>
       </a-entity>
     </a-entity>
 
