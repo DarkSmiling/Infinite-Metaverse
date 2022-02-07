@@ -12,6 +12,7 @@
   <script src="https://rawgit.com/feiss/aframe-environment-component/master/dist/aframe-environment-component.min.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
   <script src="https://unpkg.com/aframe-physics-extras/dist/aframe-physics-extras.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.125.1/examples/js/lights/LightProbeGenerator.js"></script>
 
 
   <script src="js/spawner.component.js"></script>
@@ -22,7 +23,8 @@
     AFRAME.registerComponent('sphere', {
       schema: {
       color: {type: 'color', default: '#e710eb'},
-      intensity: {type: 'number', default: 0.1}
+      intensity: {type: 'number', default: 0.1},
+      reflectivity:{type: 'number', default: 1}
       },
       update: function() {
         this.el.setObject3D('pointlight', new THREE.PointLight(this.data.color, this.data.intensity, 20));
@@ -34,18 +36,59 @@
 						side: THREE.DoubleSide,
 						alphaTest: 1,
             shininess: 100,
-            specular: this.data.color
+            specular: this.data.color,
+            envMap: new THREE.CubeTextureLoader()
+              .setPath( 'img/cubemapsky/' )
+              .load( [
+                'posx.png',
+                'negx.png',
+                'posy.png',
+                'negy.png',
+                'posz.png',
+                'negz.png'
+              ] ),
+            reflectivity: this.data.reflectivity,
+            emissive: 0x59ff00
 					} );
         var material = new THREE.MeshBasicMaterial({
           color: this.data.color,
           wireframe: false
         })
+        var material2 = new THREE.MeshBasicMaterial({
+          envMap: new THREE.CubeTextureLoader()
+              .setPath( 'img/cubemapsky/' )
+              .load( [
+                'posx.png',
+                'negx.png',
+                'posy.png',
+                'negy.png',
+                'posz.png',
+                'negz.png'
+              ] ),
+        })
         var geometry = new THREE.SphereGeometry( 0.2, 32, 16 );
-        let sphere = this.el.setObject3D('mesh', new THREE.Mesh(geometry, material1));
+        let sphere = this.el.setObject3D('mesh', new THREE.Mesh(geometry, material2));
         pointlight.sphere;
       }
     });    
   </script>
+
+  <script>
+    AFRAME.registerComponent('get', {
+      schema: {
+      color: {type: 'color', default: '#e710eb'},
+      intensity: {type: 'number', default: 0.1},
+      reflectivity:{type: 'number', default: 1}
+      },
+        update: function () {
+          let mat= this.el.getObject3D("mesh").material
+          mat.remove;
+          console.log("Material", mat)
+          
+        }
+      });   
+  </script>
+
   <script>
     //color randomizer
     AFRAME.registerComponent('color-randomizer', {
@@ -181,8 +224,8 @@
       <!-- <a-entity class="syncup" position="0 1 0"></a-entity>
       <a-entity class="syncup" position="1 1 0"></a-entity>
       <a-entity class="syncup" position="-1 1 0"></a-entity>
-      <a-entity class="cube" mixin="cube" position="1 0.265 -0.5" material="color: green"></a-entity>> -->
-      <!-- <a-entity id="sphere" sphere position="0 2 0"> </a-entity> -->
+      <a-entity class="cube" mixin="cube" position="1 0.265 -0.5" material="color: green"></a-entity>>
+      <a-entity id="sphere" sphere get position="0 2 0"> </a-entity> -->
       <!-- <a-entity id="01" networked="template:#objects-template;attachTemplateToLocal:true;"></a-entity> -->
       <!-- <a-sphere class="obj" color="#f00" toggle-physics dynamic-body draggable grabbable radius="0.2" position="0 0.5 1"></a-sphere> -->
       <!-- <a-entity id="e-face_shield_01" class="obj" gltf-model="#face_shield" toggle-physics dynamic-body grabbable draggable position="0 2 0"></a-entity> -->
@@ -285,6 +328,37 @@
       console.log("funca", new Date());
     }
   </script>
+
+<script>
+        const sceneEl = document.querySelector('a-scene');
+  AFRAME.registerComponent('ssao', { 
+    init: function () { 
+      const scene = this.el.sceneEl.object3D;
+      this.lightProbe = new THREE.LightProbe();
+      this.lightProbe.intensity = 1;
+
+    scene.add(this.lightProbe);
+    const systemLightProbe = this.lightProbe;
+
+    const cubeTexture = new THREE.CubeTextureLoader()
+      .setPath('img/cubemap/')
+      .load([
+        'posx.png',
+        'negx.png',
+        'posy.png',
+        'negy.png',
+        'posz.png',
+        'negz.png'
+      ], function (cubeTexture) {
+        systemLightProbe.copy(THREE.LightProbeGenerator.fromCubeTexture(cubeTexture));
+        systemLightProbe.intensity = 1;
+    });
+
+    this.lightProbe = systemLightProbe;
+    this.lightProbe.intensity = 1;
+    }
+  });
+</script>
 
 </body>
 
