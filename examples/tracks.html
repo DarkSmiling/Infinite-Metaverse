@@ -92,12 +92,10 @@
     AFRAME.registerComponent('thumbstick-logging',{
       init: function () {
         this.el.addEventListener('abuttondown', this.logThumbstick);
+
       },
       logThumbstick: function (evt) {
-        if (evt.detail.y > 0.95) { console.log("DOWN"); }
-        if (evt.detail.y < -0.95) { console.log("UP"); }
-        if (evt.detail.x < -0.95) { console.log("LEFT"); }
-        if (evt.detail.x > 0.95) { console.log("RIGHT"); }
+        console.log(evt.detail);
       }
     });
   </script>
@@ -160,8 +158,8 @@
       <a-asset-item id="avatar" src="https://cdn.glitch.global/281c450c-b582-4e42-a57f-e56cbf5855b0/avatar.gltf?v=1643228256775"></a-asset-item>
       <!-- <a-asset-item id="avatar" src="avatar.gltf"></a-asset-item> -->
       <a-asset-item id="face_shield" src="Face_shield.gltf"></a-asset-item>
-      <a-asset-item id="handR" src="assets/leftHandHigh.glb"></a-asset-item>
-      <a-asset-item id="handL" src="assets/rightHandHigh.glb"></a-asset-item>
+      <a-asset-item id="handL" src="assets/leftHandHigh.glb"></a-asset-item>
+      <a-asset-item id="handR" src="assets/rightHandHigh.glb"></a-asset-item>
       
       <!-- Mixin -->
       <a-mixin id="touch" physics-collider phase-shift collision-filter="collisionForces: false"
@@ -263,9 +261,11 @@
       <!-- /VIVE CONTROLLERS -->
       <a-entity id="lhand" mixin="touch" input-controls="hand: left"
         networked="template:#left-hand-template;attachTemplateToLocal:true;">
+        <a-box id="02" color="tomato" depth="0.02" height="0.02" width="0.02" position="0.026 0.008 -0.112"></a-box>
       </a-entity>
       <a-entity id="rhand" mixin="touch" input-controls="hand: right"
         networked="template:#right-hand-template;attachTemplateToLocal:true;">
+        <a-box id="02" color="tomato" depth="0.02" height="0.02" width="0.02" position="-0.04 0.008 -0.112"></a-box>
       </a-entity>
     </a-entity>
 
