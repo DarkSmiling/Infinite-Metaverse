@@ -38,7 +38,7 @@
             shininess: 100,
             specular: this.data.color,
             envMap: new THREE.CubeTextureLoader()
-              .setPath( 'img/cubemap/' )
+              .setPath( 'img/cubemapsky/' )
               .load( [
                 'posx.png',
                 'negx.png',
@@ -56,7 +56,7 @@
         })
         var material2 = new THREE.MeshBasicMaterial({
           envMap: new THREE.CubeTextureLoader()
-              .setPath( 'img/cubemap/' )
+              .setPath( 'img/cubemapsky/' )
               .load( [
                 'posx.png',
                 'negx.png',
