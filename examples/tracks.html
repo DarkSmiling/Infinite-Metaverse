@@ -104,43 +104,25 @@
           handR.setAttribute("static-body", "")
           handL.setAttribute("static-body", "")
 
-          let objHandR= document.getElementById("handr")
-          let objHandL= document.getElementById("handl")
+          let objHandR= document.getElementById("modelHandR")
+          let objHandL= document.getElementById("modelHandL")
           
-          // objHandR.setAttribute("animation-mixer", "clip:Point + Thumb;loop:once;repetitions:0;clampWhenFinished:true")
-          // objHandL.setAttribute("animation-mixer", "clip:Point + Thumb;loop:once;repetitions:0;clampWhenFinished:true")
-
-
-
-          var jumpTrans = function () {
-            scene.removeEventListener('animation-loop', jumpTrans);
-            objHandR.setAttribute("animation-mixer","clip:Point + Thumb;loop:once;repetitions:0;clampWhenFinished:true");            
-            //objHandL.setAttribute("animation-mixer","clip:Point + Thumb;loop:once;repetitions:0;clampWhenFinished:true");            
-          };
-           scene.addEventListener('animation-loop', jumpTrans)
-          
-
+          objHandR.setAttribute("animation-mixer", "clip:Point + Thumb;loop:once;repetitions:0;clampWhenFinished:true")
+          objHandL.setAttribute("animation-mixer", "clip:Point + Thumb;loop:once;repetitions:0;clampWhenFinished:true")
         });
 
         this.el.addEventListener('abuttonup', function (evt) {
 
           let handR = document.getElementById("BOXR02")
           let handL = document.getElementById("BOXL02")
-          let objHandR= document.getElementById("handr")
-          let objHandL= document.getElementById("handl")
+          let objHandR= document.getElementById("modelHandR")
+          let objHandL= document.getElementById("modelHandL")
           handR.setAttribute("visible", "false")
           handL.setAttribute("visible", "false")
           handR.removeAttribute("static-body")
           handL.removeAttribute("static-body")
-          
-          var jumpTrans = function () {
-            scene.removeEventListener('animation-loop', jumpTrans);
-            objHandR.setAttribute("animation-mixer","clip:Open;loop:once;repetitions:0;clampWhenFinished:true");            
-            //objHandL.setAttribute("animation-mixer","clip:Open;loop:once;repetitions:0;clampWhenFinished:true");            
-          };
-          scene.addEventListener('animation-loop', jumpTrans)
-          
-          
+          objHandR.setAttribute("animation-mixer","clip:Open;loop:once;repetitions:0;clampWhenFinished:true");            
+          objHandL.setAttribute("animation-mixer","clip:Open;loop:once;repetitions:0;clampWhenFinished:true");            
         })
 
       },
@@ -279,7 +261,7 @@
       <!-- Hands -->
       <template id="left-hand-template">
         <a-entity>
-          <a-entity id="handl" class="handl" gltf-model="#handL"></a-entity>
+          <a-entity id="modelHandL" class="handl" gltf-model="#handL" animation-mixer="clip:Open;loop:once;repetitions:0;clampWhenFinished:true"></a-entity>
           <!-- <a-box id="02" color="tomato" depth="0.1" height="0.1" width="0.1"></a-box> -->
         </a-entity>
       </template>
@@ -287,7 +269,7 @@
       <template id="right-hand-template">
         <a-entity>
           <!-- <a-box id="01" color="tomato" depth="0.1" height="0.1" width="0.1"></a-box> -->
-          <a-entity id="handr" class="handr" gltf-model="#handR"></a-entity>
+          <a-entity id="modelHandR" class="handr" animation-mixer="clip:Open;loop:once;repetitions:0;clampWhenFinished:true" gltf-model="#handR"></a-entity>
         </a-entity>
       </template>
 
@@ -339,6 +321,10 @@
         <a-box id="BOXR02" color="green" depth="0.02" height="0.02" width="0.02" position="-0.04 0.008 -0.112"></a-box>
       </a-entity>
     </a-entity>
+    
+    <a-entity id="e-modelHandR" class="handr" position="0 0.991 0.378"    
+    gltf-model="#handR"></a-entity>
+
 
     <!-- Ground -->
 
