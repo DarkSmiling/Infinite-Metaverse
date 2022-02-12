@@ -13,7 +13,7 @@ AFRAME.registerComponent('toggle-physics', {
 
     NAF.utils.getNetworkedEntity(this.el).then((el) => {
       if (NAF.utils.isMine(el)) {
-        that.el.setAttribute('dynamic-body', 'shape:sphere');
+        that.el.setAttribute('dynamic-body', 'shape:sphere', 'mass: 0');
       } else {
         that.el.setAttribute('static-body', '');
       }
