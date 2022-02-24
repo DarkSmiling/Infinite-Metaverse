@@ -3,7 +3,9 @@ AFRAME.registerComponent('login', {
     const el = this.el;
     const component = this;
 
-    component.connectWallet();
+    this.el.addEventListener('click', function (evt) {
+      component.connectWallet();
+    });
 
     // el.addEventListener('click', function () {
     //   component.connectWallet();
@@ -27,9 +29,13 @@ AFRAME.registerComponent('login', {
     try {
       const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
       const account = accounts[0];
-
+      // const ens = await account.lookupAddress(address);
+      // const avatar = await account.getAvatar(ens);
+      
       if(account) {
         console.log("Login successful");
+        // const accounts = await ethereum.request({ method: 'eth_accounts' });
+        // console.log("Account",accounts);
         setTimeout(function () {
           console.log("Login successful");
         }, 4000);
