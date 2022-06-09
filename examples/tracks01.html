@@ -135,6 +135,23 @@
       }
     })
   </script>
+  <script>
+    AFRAME.registerComponent('cubemap', {
+      init: function () {
+        this.el.sceneEl.object3D.background = new THREE.CubeTextureLoader()
+            .setPath('img/cubemapsky/')
+            .load([
+              'posx.png',
+              'negx.png',
+              'posy.png',
+              'negy.png',
+              'posz.png',
+              'negz.png'
+            ]);
+
+      }
+    })
+  </script>
 
 <script>
   function crapIsReady() {
@@ -148,7 +165,7 @@
 </head>
 
 <body>
-  <a-scene physics="debug: true; gravity: -5; iterations: 10" background="color:#524e6c" networked-scene="
+  <a-scene cubemap physics="debug: false; gravity: -5; iterations: 10" networked-scene="
     room: dev;
     debug: true;
     adapter: wseasyrtc;
