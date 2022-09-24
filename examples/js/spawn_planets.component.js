@@ -27,7 +27,7 @@ AFRAME.registerComponent("feature-spawn-planets", {
         entityEl.setAttribute("gltf-model", `#planet0${lap}`);
         entityEl.setAttribute("position", {x:x_coord, y:100, z:z_coord});
         entityEl.setAttribute("scale", {x:15, y:15, z:15});
-        entityEl.setAttribute("anim", "");
+        entityEl.setAttribute("animation-planets", "");
       
         if(lap == 3){
           lap = 0;      

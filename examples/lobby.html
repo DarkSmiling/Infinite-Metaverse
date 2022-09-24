@@ -1,9 +1,6 @@
 <html>
-
 <head>
   <title>Infinite Metaverse</title>
-  <!-- Replace "../build.js" with the super-hands and
-         A-Frame distributions to run : -->
   <script src="super/build.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.slim.js"></script>
   <script src="/easyrtc/easyrtc.js"></script>
@@ -17,172 +14,18 @@
   <script src="https://unpkg.com/aframe-physics-extras/dist/aframe-physics-extras.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/three@0.125.1/examples/js/lights/LightProbeGenerator.js"></script>
 
-
   <script src="js/spawner.component.js"></script>
   <script src="js/toggle-physics.component.js"></script>
   <script src="js/rotator.component.js"></script>
   <script src="js/input.component.js"></script>
   <script src="js/spawn_planets.component.js"></script>
-  <script>
-    AFRAME.registerComponent('sphere', {
-      schema: {
-        color: { type: 'color', default: '#e710eb' },
-        intensity: { type: 'number', default: 0.1 },
-        reflectivity: { type: 'number', default: 1 }
-      },
-      update: function () {
-        this.el.setObject3D('pointlight', new THREE.PointLight(this.data.color, this.data.intensity, 20));
-        let pointlight = this.el.getObject3D('pointlight');
-        pointlight.castShadow = true;
-
-        var material1 = new THREE.MeshPhongMaterial({
-          color: this.data.color,
-          side: THREE.DoubleSide,
-          alphaTest: 1,
-          shininess: 100,
-          specular: this.data.color,
-          envMap: new THREE.CubeTextureLoader()
-            .setPath('img/cubemapsky/')
-            .load([
-              'posx.png',
-              'negx.png',
-              'posy.png',
-              'negy.png',
-              'posz.png',
-              'negz.png'
-            ]),
-          reflectivity: this.data.reflectivity,
-          emissive: 0x59ff00
-        });
-        var material = new THREE.MeshBasicMaterial({
-          color: this.data.color,
-          wireframe: false
-        })
-        var material2 = new THREE.MeshBasicMaterial({
-          envMap: new THREE.CubeTextureLoader()
-            .setPath('img/cubemapsky/')
-            .load([
-              'posx.png',
-              'negx.png',
-              'posy.png',
-              'negy.png',
-              'posz.png',
-              'negz.png'
-            ]),
-        })
-        var geometry = new THREE.SphereGeometry(0.2, 32, 16);
-        let sphere = this.el.setObject3D('mesh', new THREE.Mesh(geometry, material2));
-        pointlight.sphere;
-      }
-    });    
-  </script>
-
-  <script>
-    AFRAME.registerComponent('get', {
-      schema: {
-        color: { type: 'color', default: '#e710eb' },
-        intensity: { type: 'number', default: 0.1 },
-        reflectivity: { type: 'number', default: 1 }
-      },
-      update: function () {
-        let mat = this.el.getObject3D("mesh").material
-        mat.remove;
-        console.log("Material", mat)
-
-      }
-    });   
-  </script>
-  <script>
-    AFRAME.registerComponent('thumbstick-logging', {
-      init: function () {
-      
-      let scene = document.querySelector("a-scene")
-        this.el.addEventListener('abuttondown', function (evt) {
-          let handR = document.getElementById("BOXR02")
-          let handL = document.getElementById("BOXL02")
-          handR.setAttribute("visible", "false")
-          handL.setAttribute("visible", "false")
-          handR.setAttribute("static-body", "")
-          handL.setAttribute("static-body", "")
-
-          let objHandR= document.getElementById("modelHandR")
-          let objHandL= document.getElementById("modelHandL")
-          
-          objHandR.setAttribute("animation-mixer", "clip:Point + Thumb;loop:once;repetitions:0;clampWhenFinished:true")
-          objHandL.setAttribute("animation-mixer", "clip:Point + Thumb;loop:once;repetitions:0;clampWhenFinished:true")
-        });
-
-        this.el.addEventListener('abuttonup', function (evt) {
-
-          let handR = document.getElementById("BOXR02")
-          let handL = document.getElementById("BOXL02")
-          let objHandR= document.getElementById("modelHandR")
-          let objHandL= document.getElementById("modelHandL")
-          handR.setAttribute("visible", "false")
-          handL.setAttribute("visible", "false")
-          handR.removeAttribute("static-body")
-          handL.removeAttribute("static-body")
-          objHandR.setAttribute("animation-mixer","clip:Open;loop:once;repetitions:0;clampWhenFinished:true");            
-          objHandL.setAttribute("animation-mixer","clip:Open;loop:once;repetitions:0;clampWhenFinished:true");            
-        })
-
-      },
-      logThumbstick: function (evt) {
-        console.log(evt.detail);
-      }
-    });
-  </script>
-  <script>
-    AFRAME.registerComponent('cubemap', {
-      init: function () {
-        this.el.sceneEl.object3D.background = new THREE.CubeTextureLoader()
-            .setPath('img/cubemapsky/')
-            .load([
-              'posx.png',
-              'negx.png',
-              'posy.png',
-              'negy.png',
-              'posz.png',
-              'negz.png'
-            ]);
-
-      }
-    })
-  </script>
-
-  <script>
-    //color randomizer
-    AFRAME.registerComponent('color-randomizer', {
-      play: function () {
-        this.el.addEventListener('drag-drop', function (evt) {
-          evt.detail.dropped.setAttribute('material', 'color',
-            '#' + (Math.random() * 0xFFFFFF << 0).toString(16))
-          // color randomizer credit: http://stackoverflow.com/questions/1484506/random-color-generator-in-javascript#comment6801353_5365036
-        })
-      }
-    })
-    // forward mouse and touch events to the super-hands entity
-    AFRAME.registerComponent('capture-mouse', {
-      init: function () {
-        this.eventRepeater = this.eventRepeater.bind(this)
-        this.el.sceneEl.addEventListener('loaded', () => {
-          this.el.sceneEl.canvas.addEventListener('mousedown', this.eventRepeater)
-          this.el.sceneEl.canvas.addEventListener('mouseup', this.eventRepeater)
-          this.el.sceneEl.canvas.addEventListener('touchstart', this.eventRepeater)
-          this.el.sceneEl.canvas.addEventListener('touchmove', this.eventRepeater)
-          this.el.sceneEl.canvas.addEventListener('touchend', this.eventRepeater)
-        }, { once: true })
-      },
-      eventRepeater: function (evt) {
-        if (evt.type.startsWith('touch')) {
-          evt.preventDefault()
-          // avoid repeating touchmove because it interferes with look-controls
-          if (evt.type === 'touchmove') { return }
-        }
-        this.el.emit(evt.type, evt.detail)
-      }
-    })
-  </script>
+  <script src="js/sphere.component.js"></script>
+  <script src="js/get-material.component.js"></script>
+  <script src="js/thumbstick-logging.component.js"></script>
+  <script src="js/cubemap-sky.component.js"></script>
+  <script src="js/random-color.component.js"></script>
+  <script src="js/capture-mouse.component.js"></script>
+  <script src="js/animation-planets.component.js"></script>
 
   <script>
     function crapIsReady() {
@@ -192,41 +35,15 @@
       }
     }
   </script>
-
-  <script>
-    AFRAME.registerComponent('anim', {
-  schema: {
-    time: { type: 'number', default: 0.0001 },
-    timeobj: { type: 'number', default: 20 },
-    height: { type: 'number', default: 50 },
-    height2: { type: 'number', default: 0.8 },
-
-  },
-  tick: function () {
-    let time = performance.now() * this.data.time;
-
-    // this.el.object3D.position.x = Math.sin(time * -3) * 3;
-    this.el.object3D.position.y = Math.sin(time * this.data.timeobj) *  this.data.height2 + this.data.height ;
-    // this.el.object3D.position.z = Math.sin(time * -2) * 2;
-
-    this.el.object3D.rotation.y = time;
-    // this.el.object3D.rotation.z = time;
-
-    time += 1;
-  }
-  });    
-  </script>
-
 </head>
 
 <body>
-  <a-scene cubemap physics="debug: false; gravity: -5; iterations: 10" networked-scene="
+  <a-scene cubemap-sky physics="debug: false; gravity: -5; iterations: 10" networked-scene="
     room: dev;
     debug: true;
     adapter: wseasyrtc;
     onConnect: crapIsReady;
   ">
-
     <a-assets>
       <!-- Assets -->
       <a-asset-item id="avatar"
@@ -253,7 +70,7 @@
                   colliderEndEventProperty: clearedEls;"></a-mixin>
 
       <a-mixin id="cube" geometry="primitive: box; width: 0.33; height: 0.33; depth: 0.33" hoverable grabbable
-        stretchable draggable event-set__hoveron="_event: hover-start; material.opacity: 0.7; transparent: true"
+        stretchable draggable event-set__hoveron="_event: hover-start; material.opacity: 0.1; transparent: true"
         event-set__hoveroff="_event: hover-end; material.opacity: 1; transparent: false" dynamic-body shadow></a-mixin>
 
       <!-- Player -->
@@ -278,18 +95,15 @@
       <!-- Objects template -->
       <template id="objects-template">
         <a-entity>
-          <a-entity class="obj" id="sphere" sphere toggle-physics draggable grabbable stretchable position="0 1 0"
-            shadow="cast:true; receive:false"> </a-entity>
-          <!-- <a-sphere class="obj" color="#f00" toggle-physics draggable grabbable shadow="cast:true; receive:true" radius="0.2" position="0 2 0"></a-sphere> -->
-          <!-- <a-entity id="e-face_shield_01" class="obj" gltf-model="#avatar" toggle-physics grabbable draggable position="0 2 0"></a-entity> -->
-          <!-- <a-entity class="cube" mixin="cube" material="color: red"></a-entity> -->
+          <a-entity class="obj" id="sphere" sphere toggle-physics draggable grabbable stretchable position="0 1 0" shadow="cast:true; receive:false"> </a-entity>
         </a-entity>
       </template>
 
       <!-- Hands -->
       <template id="left-hand-template">
         <a-entity>
-          <a-entity id="modelHandL" class="handl" gltf-model="#handL" animation-mixer="clip:Open;loop:once;repetitions:0;clampWhenFinished:true"></a-entity>
+          <a-entity id="modelHandL" class="handl" gltf-model="#handL"
+            animation-mixer="clip:Open;loop:once;repetitions:0;clampWhenFinished:true"></a-entity>
           <!-- <a-box id="02" color="tomato" depth="0.1" height="0.1" width="0.1"></a-box> -->
         </a-entity>
       </template>
@@ -297,50 +111,34 @@
       <template id="right-hand-template">
         <a-entity>
           <!-- <a-box id="01" color="tomato" depth="0.1" height="0.1" width="0.1"></a-box> -->
-          <a-entity id="modelHandR" class="handr" animation-mixer="clip:Open;loop:once;repetitions:0;clampWhenFinished:true" gltf-model="#handR"></a-entity>
+          <a-entity id="modelHandR" class="handr"
+            animation-mixer="clip:Open;loop:once;repetitions:0;clampWhenFinished:true" gltf-model="#handR"></a-entity>
         </a-entity>
       </template>
 
     </a-assets>
-    <!-- 
-      <a-entity class="cube" mixin="cube" position="0 0.265 -1" material="color: red"></a-entity>
-      <a-entity class="cube" mixin="cube" position="0 0.265 -0.5" material="color: red"></a-entity>
-      <a-entity class="cube" mixin="cube" position="-1 0.265 -1" material="color: blue"></a-entity>
-      <a-entity class="cube" mixin="cube" position="-1 0.265 -0.5" material="color: blue"></a-entity>
-      <a-entity class="cube" mixin="cube" position="1 0.265 -1" material="color: green"></a-entity>
-      <a-entity class="cube" mixin="cube" position="1 0.265 -0.5" material="color: green"></a-entity> -->
+    
+    <a-entity id="tst" feature-spawn-planets></a-entity>
     <a-entity class="syncup" position="0 0 0"></a-entity>
     <a-entity class="syncup" position="1 0 0"></a-entity>
     <a-entity class="syncup" position="-1 0 0"></a-entity>
-    <a-entity class="cube" mixin="cube" position="1 0.265 -0.5" material="color: green"></a-entity>
-    <!-- <a-entity id="sphere" sphere get position="113.541 30.684 -54.671" scale="125.000 125.000 125.000"> </a-entity>
-    <a-entity id="sphere" sphere get position="234.065 62.743 -30.989" scale="100 100 100"> </a-entity>
-    <a-entity id="sphere" sphere get position="358.892 92.563 7.497" scale="90 90 90"> </a-entity> -->
+    <a-entity class="cube" mixin="cube" color-randomizer position="1 0.265 -0.5" random-color></a-entity>
 
     <!-- <a-entity id="planet01" class="planets" gltf-model="#planet01" position="130 30.684 -54.671" scale="15 15 15" anim></a-entity>
     <a-entity id="planet02" class="planets" gltf-model="#planet02" position="275.065 62.743 -30.989" scale="15 15 15" anim="height:75"></a-entity>
     <a-entity id="planet03" class="planets" gltf-model="#planet03" position="390.892 92.563 7.497" scale="15 15 15" anim="height:100"></a-entity> -->
-    
-    
-    <!-- <a-entity id="01" networked="template:#objects-template;attachTemplateToLocal:true;"></a-entity> -->
-    <!-- <a-sphere class="obj" color="#f00" toggle-physics dynamic-body draggable grabbable radius="0.2" position="0 0.5 1"></a-sphere> -->
-    <!-- <a-entity id="e-face_shield_01" class="obj" gltf-model="#face_shield" toggle-physics dynamic-body grabbable draggable position="0 2 0"></a-entity> -->
-    <!-- <a-entity id="ava01" gltf-model="#avatar" position="0 1 0"></a-entity> -->
 
     <!-- LIGHTS -->
     <a-entity light="type: ambient; color: #BBB" visible="false"></a-entity>
     <a-entity id="directional" light="type: directional; color: #ffffff; intensity: 0.2; castShadow: true"
       position="8.35 5.13 1.3"></a-entity>
-    <a-entity id="hemisphere" light="type: hemisphere; color: #af9ffe; groundColor: #ffffff; intensity: 0.51"
-      position="0 5 0"></a-entity>
-    <!-- <a-entity light="type: point; intensity: 0.75; distance: 50; decay: 2; castShadow: false" position="0 3 0"></a-entity> -->
-    <a-entity id="tst" feature-spawn-planets >
-    </a-entity>
+    <a-entity id="hemisphere" light="type: hemisphere; color: #af9ffe; groundColor: #ffffff; intensity: 0.51" position="0 5 0"></a-entity>
+
     <!-- player -->
     <a-entity id="player" networked="template:#player-template;attachTemplateToLocal:true;" position="0 0.1 2"
       rotation="0 0 0" movement-controls="speed:0.3">
-      <a-entity id="camera" camera="fov: 90; far: 1000" position="0 0.5 0" look-controls capture-mouse cursor="rayOrigin:mouse"
-        body="type: static; shape: sphere; sphereRadius: 0.001" super-hands="colliderEvent: raycaster-intersection;
+      <a-entity id="camera" camera="fov: 90; far: 1000" position="0 0.5 0" look-controls capture-mouse
+        cursor="rayOrigin:mouse" body="type: static; shape: sphere; sphereRadius: 0.001" super-hands="colliderEvent: raycaster-intersection;
               colliderEventProperty: els;
               colliderEndEvent:raycaster-intersection-cleared;
               colliderEndEventProperty: clearedEls;" spawner="template:#objects-template"
@@ -349,28 +147,19 @@
       <!-- /VIVE CONTROLLERS -->
       <a-entity id="lhand" mixin="touch" input-controls="hand: left" thumbstick-logging
         networked="template:#left-hand-template;attachTemplateToLocal:true;">
-        <a-box id="BOXL02" color="green" depth="0.02" height="0.02" width="0.02" position="0.026 0.008 -0.095" visible="true"></a-box>
+        <a-box id="BOXL02" color="green" depth="0.02" height="0.02" width="0.02" position="0.026 0.008 -0.095"
+          visible="true"></a-box>
       </a-entity>
       <a-entity id="rhand" mixin="touch" input-controls="hand: right" thumbstick-logging
         networked="template:#right-hand-template;attachTemplateToLocal:true;">
-        <a-box id="BOXR02" color="green" depth="0.02" height="0.02" width="0.02" position="-0.04 0.008 -0.095" visible="true"></a-box>
+        <a-box id="BOXR02" color="green" depth="0.02" height="0.02" width="0.02" position="-0.04 0.008 -0.095"
+          visible="true"></a-box>
       </a-entity>
     </a-entity>
-    
-    <!-- <a-entity id="e-modelHandR" class="handr" position="0 0.991 0.378"    
-    gltf-model="#handR"></a-entity> -->
-
-
     <!-- Ground -->
 
-    <a-box body="type: static; shape: box" color="#d09090" width=100 height=0.1 depth=100 visible="true"
-      shadow="cast:true; receive:true"></a-box>
-
-
-
+    <a-box body="type: static; shape: box" color="#d09090" width=100 height=0.1 depth=100 visible="true" shadow="cast:true; receive:true"></a-box>
   </a-scene>
-
-
 
   <script>
     NAF.schemas.add({
@@ -466,8 +255,5 @@
     });
   </script>
   
-  
-
 </body>
-
 </html>
